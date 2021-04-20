@@ -79,12 +79,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "histories", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "history_items", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "item_id", null: false

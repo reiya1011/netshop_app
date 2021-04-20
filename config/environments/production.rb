@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  
+  config.action_mailer.default_url_options = { host: 'example.com'}
+  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -36,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -64,8 +66,25 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.raise_delivery_errors = true
+  #deviseが認証用のURLなどを生成するのに必要になる（らしい）
+  config.action_mailer.default_url_options = {  :host => 'https://lit-oasis-34166.herokuapp.com' }
+  #送信方法を指定（この他に:sendmail/:file/:testなどがあります)
+  config.action_mailer.delivery_method = :smtp
+  #送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
+  config.action_mailer.smtp_settings = {
+    #gmail利用時はaddress,domain,portは下記で固定
+    address:"smtp.gmail.com",
+    domain: 'gmail.com',
+    port:587,
+    #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
+    user_name: Rails.application.credentials.gmail[:user_name],
+    #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
+    password: Rails.application.credentials.gmail[:password],
+    #パスワードをBase64でエンコード
+    authentication: :login
+  }
+  
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -96,7 +115,6 @@ Rails.application.configure do
   #
   # The `database_resolver` class is used by the middleware to determine which
   # database is appropriate to use based on the time delay.
-  #
   # The `database_resolver_context` class is used by the middleware to set
   # timestamps for the last write to the primary. The resolver uses the context
   # class timestamps to determine how long to wait before reading from the
