@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart = current_cart
     user_history
-    @info = @item.info[0]
   end
   
   def new
@@ -24,37 +23,15 @@ class ItemsController < ApplicationController
   end
   
   
-  # 商品を商品ジャンルを紐付けして作成
   def create
    @item = Item.new(item_params)
-   @info = Info.find_by(info_params)
-   if @info
-    if @item.save
-     @info.item_info.create(item_id: @item.id)
+   if @item.save
      flash[:success] = "商品が登録されました"
      redirect_to new_item_path
-    else
-     flash.now[:danger] = "登録内容に不備があります"
-     render 'new' 
-    end
-    
    else
-    @info = Info.new(info_params)
-    if @info.save
-     if @item.save
-      @info.item_info.create(item_id: @item.id)
-      flash[:success] = "商品が登録されました"
-      redirect_to new_item_path
-     else
-      flash.now[:danger] = "登録内容に不備があります"
-      render 'new' 
-     end
-    else
      flash.now[:danger] = "登録内容に不備があります"
      render 'new' 
-    end
    end
-   
   end
   
   
@@ -67,40 +44,13 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    @info = Info.find_by(info_params)
-    
-    #　@infoが存在する場合
-    if @info
-     # @itemが更新できる場合　
-     if @item.update(item_params)
-      @item.info.update(info_params)
+    if @item.update(item_params)
       flash[:success] = "商品情報が変更されました"
       redirect_to @item
      # @itemが更新できない場合
-     else
+    else
       flash.now[:danger] = "変更内容に不備があります"
       render 'edit'
-     end
-     
-     
-    # @infoが存在しない場合
-    else
-     @info = Info.new(info_params)
-     if @info.save
-      # @itemが更新できる場合　
-      if @item.update(item_params)
-        @item.info.update(info_params)
-        flash[:success] = "商品情報が変更されました"
-        redirect_to @item
-      # @itemが更新できない場合
-      else
-       flash.now[:danger] = "変更内容に不備があります"
-       render 'edit'  
-      end
-     else
-      flash.now[:danger] = "変更内容に不備があります"
-      render 'edit'  
-     end
     end
   end
   
@@ -113,22 +63,20 @@ class ItemsController < ApplicationController
   end
   
   
-  
+  #新作商品(2年で設定)ページ
   def new_work
     @all_items = Item.all
     @items = []
+    @count = 0
     @all_items.each do |item|
      unless item.created_at < 24.month.ago
        @items << item
+       @count += 1
      end
-    end
-    @count = 0
-    @items.each do |n|
-     @count += 1 if n.release?
     end
   end
   
-  
+  #女性向け商品ページ
   def woman
     @info = Info.where(gender: "woman", category: params[:item_id])
     @items = []
@@ -141,7 +89,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  
+  #男性向け商品ページ
   def mens
     @info = Info.where(gender: "mens", category: params[:item_id])
     @items = []
@@ -157,11 +105,7 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:name, :content, :price, :stocks, :image, images: [])
-    end
-    
-    def info_params
-      params.require(:item).permit(:gender, :category)
+      params.require(:item).permit(:name, :content, :price, :stocks, :gender, :category, :image, images: [])
     end
     
     # タイトルを特定する

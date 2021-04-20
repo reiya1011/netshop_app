@@ -1,34 +1,6 @@
-<% if logged_in? && current_user.admin? %>
- <% if item.release? %>
- 
-  <div class="items">
-   <%= link_to item do %>
-    <%= image_tag(item.image) %>
-    <p><%= item.name %></p>
-    <p><%= "¥#{item.price}" %></p>
-   <% end %>
-  </div>
-  
- <% else %>
- 
-  <div class="items">
-   <%= link_to item do %>
-    <%= image_tag(item.image, :class => "item_url") %>
-   <% end %>
-   <p><%= "#{item.name}(非公開)" %></p>
-   <p><%= "¥#{item.price}" %></p>
-  </div>
- <% end %>
- 
-<% else %>
- <% if item.release? %>
- 
-  <div class="items">
-   <%=link_to image_tag(item.image), item %>
-   <p><%= item.name %></p>
-   <p><%= "¥#{item.price}" %></p>
-  </div>
-  
- <% end %>
-<% end %>
+<div class="items">
+ <%=link_to image_tag(item.image), item %>
+ <p><%= item.name %></p>
+ <p><%= "¥#{item.price}" %></p>
+</div>
 

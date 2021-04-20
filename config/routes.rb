@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   post '/shipping', to: 'purchase#shipping'
   get '/admin/home', to: 'admin#home'
-  get '/admin/private_items', to: 'admin#private_items'
   get '/admin/contats/:id', to: 'contacts#email_show'
   
   resources :items do
