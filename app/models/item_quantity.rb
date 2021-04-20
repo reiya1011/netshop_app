@@ -1,0 +1,2 @@
+class ItemQuantity < ApplicationRecord
+end
