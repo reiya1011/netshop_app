@@ -1,7 +1,6 @@
 /* 管理者画面のCSS */
 .admin-wrapper {
   background-color: #f5f5f5;
-  min-height: 93vh;
  
   .admin-list {
     margin-bottom: 5%;
@@ -26,7 +25,7 @@
   }
   
   .admin-right {
-    
+     min-height: 90vh;
     .list-wrapper {
       padding: 0 5% 3% 5%;
     }

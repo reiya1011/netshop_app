@@ -1,8 +1,6 @@
 
 <div class="items-wrapper">
  <% @items.each do |item| %>
- 
-  <% if item.release? %>
    <div class="items">
     <%= link_to item do %>
      <%= image_tag(item.image) %>
@@ -13,18 +11,6 @@
     <p><%= item.name %></p>
     <p><%= "¥#{item.price}" %></p>
    </div>
-  <% else %>
-   <div class="items">
-    <%= link_to item do %>
-     <%= image_tag(item.image, :class => "item_url") %>
-    <% end %>
-    <%= form_with(model: current_user.likes.find_by(item_id: item.id),html: { method: :delete }, local: true) do |f| %>
- 　　　<%= button_tag  '<i class="fas fa-times unlike_icon"></i>'.html_safe, :name => nil %>
-　　<% end %>
-    <p><%= "#{item.name}(非公開)" %></p>
-    <p><%= "¥#{item.price}" %></p>
-   </div>
-  <% end %>
  <% end %>
 </div>
 

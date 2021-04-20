@@ -78,28 +78,14 @@ class ItemsController < ApplicationController
   
   #女性向け商品ページ
   def woman
-    @info = Info.where(gender: "woman", category: params[:item_id])
-    @items = []
-    @info.each do |info|
-     @items += info.in_item
-    end
-    @count = 0
-    @items.each do |n|
-     @count += 1 if n.release?
-    end
+    @items = Item.where(gender: "woman", category: params[:item_id])
+    @count = @items.count
   end
   
   #男性向け商品ページ
   def mens
-    @info = Info.where(gender: "mens", category: params[:item_id])
-    @items = []
-    @info.each do |info|
-     @items += info.in_item
-    end
-    @count = 0
-    @items.each do |n|
-     @count += 1 if n.release?
-    end
+    @items = Item.where(gender: "mens", category: params[:item_id])
+    @count = @items.count
   end
   
   private

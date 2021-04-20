@@ -1,8 +1,18 @@
 <div class="item-show-wrapper">
  <div class="item-show-container">
   <div class="item-show-left-wrapper">
-  
-
+ 
+   <% if @item.gender == "mens" %>
+    <%= link_to item_mens_path(@item.category) do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% else @item.gender == "woman" %>
+    <%= link_to item_woman_path(@item.category) do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% end %>
  
    <%= render 'items/item_show_left' %>
   </div>
