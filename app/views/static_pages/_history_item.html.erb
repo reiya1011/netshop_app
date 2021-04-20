@@ -1,0 +1,83 @@
+<div class="history-container">
+  <div class="history-image">
+   <%= image_tag asset_path('history-image2.jpg'), class: 'history-image1' %>
+  </div>
+  
+   
+  <div class="user-history">
+   <% unless @items.empty? %>
+    <h2 class="serif">チェックしたアイテム</h2>
+    <div class="slider-container">
+     <div class="slider">
+      <% @items.each do |item| %>
+       <div class="items">
+        <%= link_to item do %>
+         <%= image_tag(item.image) %>
+        <% end %>
+        <p><%= item.name %></p>
+       </div>
+      <% end %>
+     </div>
+    </div>
+   <% else %>
+     <h3 class="serif">注目のアイテム</h3>
+     <div class="slider-container">
+      <div class="slider">
+       <% @recommendations.each do |item| %>
+        <div class="items">
+         <%= link_to item do %>
+          <%= image_tag(item.image) %>
+         <% end %>
+         <p><%= item.name %></p>
+        </div>
+      <% end %>
+     </div>
+    </div>
+   <% end %>
+  </div>
+ 
+  
+</div>
+
+
+<div class="phone-history-container">
+ 
+  <div class="phone-history-image">
+   <%= image_tag asset_path('history-image2.jpg'), class: 'phone-history-image1' %> 
+  </div>
+  
+  <div class="phone-history-items">
+   
+    <% unless @items.empty? %>
+     <h3 class="serif">チェックしたアイテム</h3>
+     <div class="slider-container">
+      <div class="slider">
+       <% @items.each do |item| %>
+        <div class="items">
+         <%= link_to item do %>
+          <%= image_tag(item.image) %>
+         <% end %>
+         <p><%= item.name %></p>
+        </div>
+      <% end %>
+     </div>
+    </div>
+   <% else %>
+    <h3 class="serif">注目のアイテム</h3>
+     <div class="slider-container">
+      <div class="slider">
+       <% @recommendations.each do |item| %>
+        <div class="items">
+         <%= link_to item do %>
+          <%= image_tag(item.image) %>
+         <% end %>
+         <p><%= item.name %></p>
+        </div>
+      <% end %>
+     </div>
+    </div>
+   <% end %>
+   
+   
+  </div>
+</div>

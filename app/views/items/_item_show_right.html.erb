@@ -1,0 +1,28 @@
+<h3 class="serif item-name"><%= @item.name %></h3>
+
+<p class="serif item-price"><%= "¥#{@item.price}" %></p>
+
+
+<div class="active-form-wrapper">
+ 
+  <div class="item-cartform">
+   <%= render 'carts/create_form' %>
+  </div>
+
+  <div class="item-likeform">
+  
+   <% if logged_in? %>
+    <% if current_user.liking.include?(@item) %>
+     <%= render 'likes/unlike' %>
+    <% else %>
+     <%= render 'likes/like' %>
+    <% end %>
+   <% else %>
+    <%= link_to "お気に入りに追加", likes_path, {class: "like-login"}%>
+   <% end %>
+  </div>
+
+<div class="item-content-wrapper">
+ <div class="item-content font-serif word-wrap"><%= @item.content %></div>
+</div>
+   

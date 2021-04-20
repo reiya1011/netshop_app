@@ -1,0 +1,26 @@
+/* コンタクトページのCSS */
+.contact-wrapper {
+  padding-left: 10%;
+  padding-right: 10%;
+  h3 {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 20px;
+  }
+  
+  .contact-form-btn {
+    width: 100%;
+    background-color: #DCDCDC;
+    color: black;
+    border: 1px solid #DCDCDC;
+    margin-top: 3%;
+  }
+  
+  .contacts-form {
+    height: 20vw;
+  }
+}
+
+.contact-show-wrapper {
+  margin-top: 3%;
+}

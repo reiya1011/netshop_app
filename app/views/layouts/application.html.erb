@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ShopApp</title>
+    <title>NetShop</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css?v=2" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+ 
   </head>
 
   <body>
+   <header>
+    <%= render 'layouts/header' %>
+   </header>
+   <div class="top-wrapper">
+    <% flash.each do |message_type, message| %>
+     <% if message_type == 'success' || message_type == 'danger' %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+     <% end %>
+    <% end %>
     <%= yield %>
+    <%= render 'layouts/java_form' %>  
+   </div>
+    <footer>
+     <%= render 'layouts/footer' %>
+    </footer>
+    
   </body>
 </html>

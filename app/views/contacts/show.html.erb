@@ -1,0 +1,30 @@
+<div class="admin-wrapper">
+ <%= render 'admin/list' %>
+ <div class="admin-right">
+  <div class="list-wrapper">
+   <h3 class="center">問い合わせ詳細</h3>
+   <div class="contact-show-wrapper">
+    <table class="table">
+     <tbody>
+      <tr>
+       <th scope="col", class="word-break">メールアドレス</th>
+       <td><%= link_to  @contact.email, "/admin/contats/#{@contact.id}" %></td>
+      </tr>
+      <tr>
+       <th scope="col">日付</th>
+       <td><%= @contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+      <tr>
+       <th scope="col">件名</th>
+       <td><%= @contact.subject %></td>
+      </tr>
+      <tr>
+       <th scope="col">内容</th>
+       <td><span class="word-wrap"><%= @contact.contents %></td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+</div>

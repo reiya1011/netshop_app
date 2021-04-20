@@ -1,0 +1,48 @@
+<!-- 管理者ページの会員一覧 -->
+<div class="admin-wrapper">
+ <%= render 'admin/list' %>
+ 
+ <div class="admin-right">
+  <div class="list-wrapper">
+   <h3 class="center">会員一覧</h3>
+   
+   <table class="table">
+    
+    <thead>
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="col">メール</th>
+      <th scope="col">名前</th>
+      <th scope="col">住所登録</th>
+      <th scope="col">登録日</th>
+      <th scope="col">削除</th>
+     </tr>
+    </thead>
+    
+    <tbody>
+     <% @users.each do |user| %>
+      <tr>
+       <th scope="row"><%= user.id %></th> 
+       <td><%= user.email %></td>
+       <% if user.u_info.empty? %>
+        <td>未登録</td>
+        <td>未登録</td>
+       <% else %>
+        <td><%= user.u_info[0].name %></td>
+        <td><%= link_to "登録済み", purchase_path(user.u_info[0].id) %></td>
+       <% end %>
+       <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+       <% if user.admin? %>
+        <td>管理者</td>
+       <% else %>
+        <td><%= link_to "退会", user, method: :delete, class: "aaa" %></td>
+       <% end %>
+      </tr>
+     <% end %>
+    </tbody>
+    
+   </table>
+   <%= paginate @users %>
+  </div>
+ </div>
+</div>

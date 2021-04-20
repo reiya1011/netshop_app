@@ -1,0 +1,76 @@
+<div class="admin-wrapper">
+ 
+ <%= render 'admin/list' %>
+ 
+ <div class="admin-right">
+  <div class="list-wrapper">
+   <h3 class="center">登録情報</h3>
+    <table class="table">
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="row"><%= @user_info.id %></th>
+     </tr>
+     <tr>
+      <th scope="col">名前</th>
+      <td><%= @user_info.name %></td>
+     </tr>
+     <tr>
+      <th scope="col">電話番号</th>
+      <td><%= @user_info.phone_number %></td>
+     </tr>       
+     <tr>
+      <th scope="col">郵便番号</th>
+      <td><%= @user_info.postal_code %></td>
+     </tr>
+     <tr>
+      <th scope="col">住所</th>
+      <td>
+       <%= @user_info.prefectures %>
+       <%= @user_info.municipal_district %>
+       <%= @user_info.street_bunch %>
+       <% unless @user_info.building_name.empty? %>
+       　<%= @user_info.building_name %>
+       <% end %>
+      </td>
+     </tr>
+    </table>
+    
+  
+   <h3 class="center" id="purchase-title">購入した商品</h3>
+   
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="col">名前</th>
+      <th scope="col">購入数</th>
+      <th scope="col">発送状況</th>
+      <th scope="col">購入日</th>
+     </tr>
+    </thead>
+
+    <tbody>
+     <% @buy_infos.each do |buy_info| %>
+      <tr>
+       <th scope="row"><%= buy_info.id %></th>
+       <td><%= link_to buy_info.item.name, buy_info.item %></td>
+       <td><%= buy_info.quantity %></td>
+       <% if buy_info.shipping? %>
+        <td>発送済み</td>
+       <% else %>
+        <td>
+         <%= form_with(url: shipping_path, local: true) do |f| %>
+        　<%= f.hidden_field :info_id, :value => buy_info.id %>
+        　<%= f.submit "発送", class: "shipping-btn" %>
+       　 <% end %>
+        </td>
+       <% end %>
+       <td><%= buy_info.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+   <%= paginate @buy_infos %>
+  </div>
+ </div>
+</div>

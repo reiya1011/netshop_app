@@ -1,0 +1,123 @@
+<div class="phone-header-wrapper">
+ 
+ <div class="phone-main-header">
+  
+  <div class="header-left">
+   <span class="logo"><%= link_to "SHOP", root_path %></span>
+  </div>
+  <div class="header-right">
+   
+   <%= link_to (cart_path(current_cart)) do %>
+　  <span class="fas fa-shopping-bag icon"></span>
+　  <% if current_cart.in_item.count >= 1 %>
+　   <div class="phone-cart-initem-icon"><%= "(#{@cart_counts})" %></div>
+　  <% end %>
+　 <% end %>
+    　  
+　 <%= link_to (likes_path), class: "link-like" do %>
+　  <span class="fa fa-heart icon"></span>
+　  <% if current_user && current_user.liking.count >= 1 %>
+　   <div class="phone-like-count"><%= "(#{current_user.liking.count})" %></div>
+　  <% end %>
+　 <% end %>
+   
+　 <% if logged_in? %>
+　  
+    <%= link_to (current_user), class: "link-male" do %>
+　   <span class="fa fa-male"></span>
+　  <% end %>
+　  
+   <% else %>
+   
+    <i class="fa fa-male login-male icon"></i>
+  　 
+   <% end %>
+   
+    <i class="fas fa-bars header-list icon"></i>
+    
+  </div>
+ </div>
+ 
+ <div class="clear"></div>
+ 
+ 
+ <div class="phone-sub-header">
+  <%= form_with(url: search_index_path, :method => 'get', local: true, class: "search-form") do %>
+   <div class="input-group">
+    <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
+    <span class="input-group-btn">
+        <%= button_tag  '<i class="fa fa-search"></i>'.html_safe, :name => nil, class: "btn btn-primary"  %>
+    </span>
+   </div>
+  <% end %>
+ </div>
+
+</div>
+
+
+  
+
+
+
+<div class="header-wrapper display-none">
+ 
+ <div class="main-header">
+  
+  <div class="main-header-left">
+   <span class="logo"><%= link_to "SHOP", root_path %></span>
+  </div>
+  
+  <div class="main-header-right">
+  
+   <i class="fas fa-shopping-bag pc-shopping-icon"></i>
+   <% if current_cart.in_item.count >= 1 %>
+　  <span class="pc-cart-initem-count"><%= "(#{@cart_counts})" %></span>
+　 <% end %>
+   
+   
+   <%= link_to (likes_path), class: "link-like" do %>
+　  <span class="fa fa-heart icon"></span>
+　 <% end %>
+　 <% if current_user && current_user.liking.count >= 1 %>
+　  <span class="pc-like-count"><%= "(#{current_user.liking.count})" %></span>
+　 <% end %>
+　 
+   <% if logged_in? %>
+　  <%= link_to (current_user), class: "link-male" do %>
+　　 <span class="fa fa-male"></span>
+　  <% end %>
+　 <% else %>
+    <i class="fa fa-male login-male icon"></i>
+   <% end %>
+  </div>
+ 
+ 
+ </div>
+
+<div class="sub-header">
+  
+  <div class="sub-header-left">
+   <ul>
+    <li><%= link_to "新着", new_work_items_path %></li>
+    <li class="header-mens-category">メンズ</li>
+    <li class="header-woman-category">ウィメンズ</li>
+   </ul>
+  </div>
+  
+  <div class="sub-header-right">
+ 
+   <%= form_with(url: search_index_path, :method => 'get', local: true, class: "search-form") do %>
+    <div class="input-group">
+     <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
+     <span class="input-group-btn">
+      <%= button_tag  '<i class="fa fa-search"></i>'.html_safe, :name => nil, class: "btn btn-primary"  %>
+     </span>
+    </div>
+   <% end %>
+   
+  </div>
+  
+</div>
+
+
+

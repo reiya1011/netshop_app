@@ -1,0 +1,220 @@
+
+<!-- 携帯用の買い物リスト -->
+ <div class="phone-header-list-wrapper display-none">
+    
+  <ul>
+   <li><%= link_to "新着", new_work_items_path %></li>
+   <li class="mens-category">メンズ<i class="fa fa-angle-right"></i></li>
+   <li class="woman-category">ウィメンズ<i class="fa fa-angle-right"></i></li>
+  </ul>
+ 
+ </div>
+
+ <div class="mens-list-wrapper display-none">
+  <p class="serif"><i class="fa fa-angle-left underline"></i><span>メンズ</span></p>
+  <ul>
+    <li><%= link_to "洋服", item_mens_path("clothes") %></li>
+    <li><%= link_to "バッグ", item_mens_path("bag") %></li>
+    <li><%= link_to "財布＆小物", item_mens_path("wallet") %></li>
+    <li><%= link_to "アクセサリー", item_mens_path("accessories") %></li>
+    <li><%= link_to "シューズ", item_mens_path("shoes") %></li>
+    <li><%= link_to "フレグランス", item_mens_path("perfume") %></li>
+  </ul>
+ </div>
+
+ <div class="woman-list-wrapper display-none">
+  <p class="serif"><i class="fa fa-angle-left underline"></i><span>ウィメンズ</span></p>
+  <ul>
+    <li><%= link_to "洋服", item_woman_path("clothes") %></li>
+    <li><%= link_to "バッグ", item_woman_path("bag") %></li>
+    <li><%= link_to "財布＆小物", item_woman_path("wallet") %></li>
+    <li><%= link_to "アクセサリー", item_woman_path("accessories") %></li>
+    <li><%= link_to "シューズ", item_woman_path("shoes") %></li>
+    <li><%= link_to "フレグランス", item_woman_path("perfume") %></li>
+  </ul>
+ </div>
+
+
+<!-- PC用の買い物リスト -->
+<div class="pc-header-list-wrapper display-none">
+ 
+ <div class="main-pc-header-list-container">
+  
+  <div class="pc-header-list-left">
+   <div class="pc-woman-list-wrapper display-none">
+    <i class="far fa-window-close pc-header-list-close"></i>
+    <ul>
+     <li><%= link_to "洋服", item_woman_path("clothes") %></li>
+     <li><%= link_to "バッグ", item_woman_path("bag") %></li>
+     <li><%= link_to "財布＆小物", item_woman_path("wallet") %></li>
+     <li><%= link_to "アクセサリー", item_woman_path("accessories") %></li>
+     <li><%= link_to "シューズ", item_woman_path("shoes") %></li>
+     <li><%= link_to "フレグランス", item_woman_path("perfume") %></li>
+    </ul>
+   </div>
+   <div class="pc-mens-list-wrapper display-none">
+    <i class="far fa-window-close pc-header-list-close"></i>
+    <ul>
+     <li><%= link_to "洋服", item_mens_path("clothes") %></li>
+     <li><%= link_to "バッグ", item_mens_path("bag") %></li>
+     <li><%= link_to "財布＆小物", item_mens_path("wallet") %></li>
+     <li><%= link_to "アクセサリー", item_mens_path("accessories") %></li>
+     <li><%= link_to "シューズ", item_mens_path("shoes") %></li>
+     <li><%= link_to "フレグランス", item_mens_path("perfume") %></li>
+    </ul>
+   </div>
+  </div>
+ 
+  <div class="pc-header-list-right">
+   <div class="pc-woman-list-wrapper display-none">
+    <%= image_tag asset_path('d60591-25-740010-0.jpg') %>
+   </div>
+   <div class="pc-mens-list-wrapper display-none">
+    <%= image_tag asset_path('mens_list.jpg') %>
+   </div>
+  </div>
+ 
+ </div>
+  
+</div>
+
+
+<!-- ログイン用のフォーム -->
+<div class="login-form-wrapper display-none">
+ 
+ <div class="login-form-container">
+  <div class="pc-login-form-left"></div>
+ 
+  <div class="login-form-right">
+   
+   <% flash.each do |message_type, message| %>
+    <% if message_type == "login_error" %>
+     <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+   <% end %>
+   
+   <div class="user-container">
+    <h3 class="center">ログイン</h3>
+
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+ 
+     <div class="form-group">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class: "form-control" %>
+     </div>
+ 
+     <div class="form-group">
+      <%= f.label :パスワード %>
+      <%= link_to "(パスワードをお忘れの方)", new_password_reset_path %>
+      <%= f.password_field :password, class: "form-control" %>
+     </div>
+     
+     <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span>ログイン状態を保持する</span>
+     <% end %>
+ 
+     <div class="center">
+      <%= f.submit "ログイン", class: "login-btn" %>
+     </div>
+     
+     
+     
+    <% end %>
+    <p class="underline center user-create-btn">初めての方はこちら</p>
+    
+   </div>
+  </div>
+ </div>
+
+</div>
+
+
+<!-- アカウント作成用のフォーム -->
+<div class="create-form-wrapper display-none">
+ 
+ <div class="create-form-container">
+  
+  <div class="pc-login-form-left"></div>
+ 
+  <div class="create-form-right">
+   
+   <% flash.each do |message_type, message| %>
+    <% if message_type == "user_create_error" %>
+     <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+   <% end %>
+ 
+   <div class="user-container">
+    <h3 class="center">アカウント作成</h3>
+
+    <%= form_with(url: users_path, local: true) do |f| %>
+
+   　 <div class="form-group">
+   　  <%= f.label :メールアドレス %>
+   　  <%= f.email_field :email, class: "form-control" %>
+   　 </div>
+ 
+   　 <div class="form-group">
+   　  <%= f.label :パスワード %>
+   　  <%= f.password_field :password, class: "form-control" %>
+   　 </div>
+    
+ 　 　 <div class="form-group">
+  　 　 <%= f.label :password_confirmation, "パスワード再入力" %>      
+  　 　 <%= f.password_field :password_confirmation, class: "form-control"%>
+   　</div>
+
+ 　 　<div class="center">
+  　 　 <%= f.submit "アカウント作成", class: "login-btn"  %>
+   　</div>
+  
+    <% end %>
+    
+   </div>
+  </div>
+ </div>
+
+</div>
+
+
+<!-- PC用のカートフォーム -->
+<div class="cart-wrapper display-none">
+ 
+ <div class="cart-container">
+  <div class="pc-login-form-left"></div>
+  
+  <div class="cart-right">
+   <div class="cart-form-wrapper">
+ 
+    <h3 class="center">ショッピングバッグ(<%= @cart_counts %>)</h3>
+    <%= link_to "ショッピングバッグに進む", current_cart, class: "shopping-path" %>
+
+
+    <% current_cart.in_item.each do |item| %>
+     <% @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id) %>
+     
+     <div class="cart-item-container">
+  
+      <div class="cart-item-left">
+       <%= link_to item do %>
+        <%= image_tag(item.image) %>
+       <% end %>
+      </div>
+   
+      <div class="cart-item-right">
+       <div class="cart-item-info">
+        <p><%= "#{item.name}(#{@cart_item.cart_quantity[0].quantity.count})" %></p>
+        <p><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></p>
+       </div>
+　      
+      </div>
+     </div>
+    <% end %>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+

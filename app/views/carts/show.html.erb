@@ -1,0 +1,52 @@
+<div class="cart-form-wrapper shopping-form-wrapper">
+ 
+ <h3 class="center serif">ショッピングバッグ(<%= @cart_counts %>)</h3>
+ <%= link_to "購入手続きに進む", shopping_path(current_cart), class: "shopping-path" %>
+
+
+ <% @all_items.each do |item| %>
+  <div class="cart-item-container">
+   
+   <div class="cart-item-left">
+    <%= link_to item do %>
+     <%= image_tag(item.image) %>
+    <% end %>
+   </div>
+   
+   <% @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id) %>
+   <% @quantity = @cart_item.cart_quantity[0].quantity %>
+   
+   <div class="cart-item-right">
+    <%= link_to item.name, item %>
+    <p><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></p>
+　  
+　  <div class="cart-item-stocks-container">
+　   <div class="cart-item-stocks-left">
+     
+      <%= form_with(model: @quantity, local: true, id: "select_form_#{item.id}") do |f| %>
+　     <div><%= hidden_field_tag :item_id, item.id %></div>
+　     <%= f.select :count, ['1', '2', '3', '4', '5'], {include_blank: '数量'}, class: 'item-stocks', onchange: "submit(#{item.id})" %>
+　    <% end %>
+　    
+　   </div>
+    
+     <div class="cart-item-stocks-right">
+      <% flash.each do |message_type, message| %>
+       <% if message_type == item.id.to_s %>
+        <div class="item-stocks-alert alert-<%= message_type %>"><%= message %></div>
+       <% end %>
+      <% end %>
+     </div>
+　  </div>
+　  
+　  <%= form_with(url: cart_path, html: { method: :delete }, local: true) do |f| %>
+     <div><%= hidden_field_tag :item_id, item.id %></div>
+     <input type="submit" class="far fa-trash-alt" value="&#xf2ed;">
+    <% end %>
+    
+   </div>
+  </div>
+   
+ <% end %>
+  
+</div>

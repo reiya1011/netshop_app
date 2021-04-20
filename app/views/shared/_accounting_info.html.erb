@@ -1,0 +1,30 @@
+ <% @items.each do |item| %>
+   <div class="shopping-item-info">
+　  <%= image_tag(item.image) %>
+　   <% @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id) %>
+　  <ul>
+　    <li><%= item.name %></li>
+      <li><%= "数量:#{@cart_item.cart_quantity[0].quantity.count}" %></li>
+      <li><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></li>
+　  </ul>
+　 </div>
+ <% end %>
+
+ 
+ <div class="shopping-price-info">
+   <h3>アイテムの合計金額</h3>
+   
+   <div><span class="subtotal">小計</span><%= "¥#{@price}" %></div>
+   
+   <span class="postage">送料</span>¥0
+
+   <div class="total-price-wrapper">
+    <span class="total-price">合計</span>
+    <%= "¥#{@price}(税込み)" %>
+   </div>
+
+ 
+   <br><%= link_to '注文を確定する', purchase_index_path, method: :post, class: "shopping-btn" %></br>
+ </div>
+ 
+

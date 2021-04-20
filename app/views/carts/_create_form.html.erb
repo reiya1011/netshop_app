@@ -1,0 +1,4 @@
+<%= form_with(url: carts_path, method: :post, local: true) do |f| %>
+ <div><%= hidden_field_tag :item_id, @item.id %></div>
+ <%= f.submit "カートに入れる", class: "cart-btn" %>
+<% end %>

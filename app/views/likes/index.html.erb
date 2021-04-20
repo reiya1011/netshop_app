@@ -1,0 +1,37 @@
+<button type="button" class="phone-user-menu up">MENU</button>
+<div class="user-show-wrapper">
+  
+ <div class="phone-user-info-list-wrapper display-none">
+  <div class="phone-user-info-list-container">
+   <ul>
+    <li><%= link_to "アカウント情報", user_path(current_user) %></li>
+    <li><%= link_to "購入履歴", history_purchase_index_path %></li>
+    <li><%= link_to "お気に入り", likes_path %></li>
+    <li><%= link_to "ショッピングバッグ", current_cart %></li>
+    <li><%= link_to "ログアウト", logout_path(current_user), method: :delete %></li>
+   </ul>
+  </div>
+  <div class="phone-user-info-under"></div>
+ </div>
+
+ <div class="image-container">
+　<%= image_tag asset_path('user-show-header.jpg') %> 
+ </div>
+ 
+ 
+ <div class="user-info-wraper">
+  <div class="user-info-container">
+   <div class="user-info-list">
+    <h2 class="serif underline">メニュー</h2>
+    <div class="user-info-list-container">
+     <%= render 'users/user_menu' %>
+    </div>
+   </div>
+   <div class="user-like-wrapper">
+    <h3 class="center serif items-title"><%= "ウィッシュリスト(#{@count})" %></h3>
+    <%= render 'likes/like_items' %>
+    <%= paginate @items %>
+   </div>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,30 @@
+ <div class="contact-wrapper">
+  <h3>お問い合わせ</h3>
+
+  <%= form_with(model: @contact, local: true) do |f| %>
+   <% if logged_in? %>
+    <div class="form-group">
+     <%= f.label :メールアドレス %>
+     <%= f.text_field :email, value: current_user.email, class: 'form-control' %>
+    </div>
+   <% else %>
+    <div class="form-group">
+     <%= f.label :メールアドレス %>
+     <%= f.text_field :email, class: 'form-control' %>
+    </div>
+   <% end %>
+
+   <div class="form-group">
+    <%= f.label :件名 %>
+    <%= f.text_field :subject, class: 'form-control' %>
+   </div>
+  
+   <div class="form-group">
+    <%= f.label :お問い合わせ内容 %>
+    <%= f.text_area :contents, class: 'form-control contacts-form' %>
+   </div>
+
+   <%= f.submit "送信する", class:"contact-form-btn" %>
+
+  <% end %>
+ </div>

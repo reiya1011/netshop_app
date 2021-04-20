@@ -1,0 +1,777 @@
+
+/* 携帯用のヘッダー */
+.phone-header-wrapper {
+  border-bottom: 1px solid #DCDCDC;
+  
+ .phone-main-header {
+    display: flex;
+   .header-left {
+     width: 50%;
+     
+     a {
+        font-size: 6vw;
+        margin-left: 10px;
+        color: black;
+     }
+   }
+   
+   .header-right {
+     width: 50%;
+     display: relative;
+     height: 15px;
+    
+     a:hover {
+      text-decoration: none; 
+     }
+     
+     .phone-cart-initem-icon {
+        position: absolute;
+        right: 29%;
+        top: 0%;
+        font-size: 3vw;
+        color: black;
+     }
+        
+     .phone-like-count {
+        position: absolute;
+        right: 17%;
+        top: 0;
+        font-size: 3vw;
+        color: black;
+     }
+     
+     .fa-shopping-bag {
+       font-size: 4vw;
+       position: absolute;
+       top: 1.8vw;
+       right: 33%;
+       color: black;
+     }
+     
+     .fa-heart {
+       font-size: 4vw;
+       position: absolute;
+       top: 2vw;
+       right: 21%;
+       color: black;
+     }
+     
+     .fa-male {
+       font-size: 4vw;
+       position: absolute;
+       top: 2vw;
+       right: 12%;
+       color: black;
+     }
+     
+     .fa-bars {
+       font-size: 4vw;
+       position: absolute;
+       top: 2vw;
+       right: 3%;
+       color: black;
+     }
+     
+     .fa-times {
+       font-size: 4vw;
+       position: absolute;
+       top: 2vw;
+       right: 3%;
+       color: black;
+     }
+     
+ 
+   }
+ }
+ 
+ .phone-sub-header {
+   text-align: center;
+   padding: 1% 2%;
+   
+   .btn-primary {
+      background-color: black;
+   }
+
+ }
+
+}
+
+/* PC用のヘッダー */
+.header-wrapper {
+    
+    .main-header {
+      display: flex;
+      border-bottom: 1px solid #DCDCDC;
+    
+      .main-header-left  {
+        width: 50%;
+      
+      a {
+        color: #333;
+        text-decoration: none;
+        font-size: 2.5vw;
+        margin-left: 25px;
+       }
+      }
+    
+      .main-header-right {
+        width: 50%;
+        position: relative;
+        
+        a:hover {
+         text-decoration: none;
+        }
+        .fa-male {
+            font-size: 1.8vw;
+            position: absolute;
+            top: 30%;
+            right: 5%;
+            color: black;
+        }
+        
+        .fa-heart {
+            font-size: 1.8vw;
+            position: absolute;
+            top: 30%;
+            right: 15%;
+            color: black;
+        }
+        
+        .fa-shopping-bag {
+            font-size: 1.8vw;
+            position: absolute;
+            top: 30%;
+            right: 28%;
+            color: black;
+        }
+        
+        .pc-cart-initem-count {
+            position: absolute;
+            right: 26%;
+            font-size: 0.8vw;
+            top: 4%;
+        }
+        
+        .pc-like-count {
+            position: absolute;
+            top: 4%;
+            right: 13%;
+            font-size: 0.8vw;
+        }
+      }
+    }
+    
+    
+    .sub-header {
+     
+      display: flex;
+      border-bottom: 1px solid #DCDCDC;
+      
+      .sub-header-left {
+        width: 70%;
+        
+        ul {
+         padding: 0;
+      
+         li {
+          color: black;
+          float: left;
+          font-size: 1.5vw;
+          padding: 10px 0 10px 18px;
+          list-style: none;
+          margin-left: 12px;
+         }
+        }
+        
+        a {
+          color: black
+        }
+      }
+     
+      .sub-header-right {
+        width: 30%;
+        position: relative;
+        
+        .btn-primary {
+           background-color: black;
+        }
+        
+        .input-group {
+           position: absolute;
+           bottom: 2%;
+           right: 7%;
+           width: 100%;
+           height: auto; 
+        }
+      }
+    } 
+}
+
+/* 携帯用の買い物リスト */
+.phone-header-list-wrapper {
+    
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 0 10%;
+    
+    ul {
+        margin-top: 10vh;
+        list-style: none;
+        padding-left: 0px;
+      li {
+          border-bottom: 1px solid #DCDCDC;
+          font-size: 20px;
+          margin-top: 20px;
+          padding-bottom: 10px;
+          
+          a {
+              color: black;
+          }
+          
+          .fa-angle-right {
+              float: right;
+              font-size: 17px;
+          }
+      }
+    }
+}
+
+/* PC用の買い物リスト */
+.pc-header-list-wrapper {
+    
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000e0;
+    
+    .main-pc-header-list-container {
+     display: flex;
+     
+     .pc-header-list-left {
+        width: 30%;
+        background-color: #f5f5f5;
+        position: relative;
+        padding-right: 5%;
+        padding-bottom: 5%;
+        color: black;
+        
+        .pc-header-list-close {
+          font-size: 30px;
+          position: absolute;
+          right: 3px;
+          top: 3px;
+        }
+        
+        li {
+          list-style: none;
+          margin-top: 3vw;
+          font-size: 1.3vw;
+          border-bottom: 1px solid #DCDCDC;
+        }
+        
+        a {
+          text-decoration: none;
+          color: black;
+          font-family: serif;
+        }
+      
+     }
+    
+     .pc-header-list-right {
+         width: 70%;
+         background-color: white;
+         border-left: 1px solid #DCDCDC;
+        
+         img {
+           height: 100%;  
+           width: 50%;
+           object-fit: cover;
+           float: right;
+         }
+         
+         .pc-woman-list-wrapper, .pc-mens-list-wrapper {
+           height: 100%;
+           width: 100%;
+           padding: 2%;
+         }
+     }
+    }
+}
+
+/* 携帯用の買い物リスト(性別) */
+.mens-list-wrapper, .woman-list-wrapper {
+    
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 0 10%;
+    
+    p {
+      margin-top: 30px;
+      font-size: 23px;
+      
+      .fa-angle-left {
+          margin-right: 30px;
+      }
+    }
+    
+    ul {
+        margin-top: 6vh;
+        list-style: none;
+        padding-left: 0px;
+      li {
+          border-bottom: 1px solid #DCDCDC;
+          font-size: 20px;
+          margin-top: 20px;
+          padding-bottom: 10px;
+          
+          a {
+            color: black;
+            display: block;
+          }
+      }
+    }
+}
+
+.main-wrapper {
+    
+ line-height: 0;
+ text-align: center;
+ 
+ .top-image1 {
+  max-width: 100%;
+  margin-bottom: 10px;
+ }
+}
+
+/* トップページのショップ紹介 */
+.shop-info-container {
+    
+ h3 {
+  font-size: 4vw;
+  margin-top: 7vw;
+ }
+ 
+ p {
+  margin-top: 5vw;
+  font-size: 2vw;
+ }
+    
+ a {
+  border: 1px solid #DCDCDC;
+  background-color: black;
+  color: white;
+  display: block;
+  margin: 5vw auto;
+  width: 55vw;
+  font-size: 1vw;
+  padding: 2vw;
+ }
+}
+
+
+/* PC用のトップページの閲覧履歴　*/
+.history-container {
+  display: flex;
+  margin-top: 45px;
+  
+  .history-image {
+    border: 1px solid #DCDCDC;
+    width: 40%;
+    
+    .history-image1 {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .user-history {
+    border: 1px solid #DCDCDC;
+    width: 60%;
+　　position: relative;
+    padding: 0 40px;
+    padding-top: 0;
+    
+    h2 {
+        margin-bottom: 0;
+        padding-top: 1vw;
+        font-size: 2vw;
+    }
+   }
+    
+  .slider-container {
+    width: 60%;
+    margin: 0 auto;
+      
+    .items {
+      width: 100%;
+      
+      img {
+        width: 90%;
+        object-fit: cover;
+        margin: 0 auto;
+        display: inline-block;
+        margin-bottom: 40px;
+      }
+      
+      p {
+        font-size: 2vw;
+        margin-bottom: 30px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+/* 携帯用のトップページの閲覧履歴 */
+.phone-history-container {
+    
+  .phone-history-image1 {
+    margin-top: 30px;
+    height: 150px;
+    width: 90%;
+    object-fit: cover;
+    object-position: 50% 37%;
+  }
+  
+  .phone-history-items {
+    border: 1px solid #DCDCDC; 
+    margin-top: 20px;
+    padding-bottom: 20px;
+    
+    h3 {
+     margin-bottom: 0;
+     padding-top: 1vw;
+     font-size: 4vw;
+    }
+    
+    .items {
+        
+     img {
+      margin: 0 auto;
+      width: 30%;
+      object-fit: cover;
+      display: block; 
+      margin-bottom: 20px;
+     }
+    
+     p {
+      font-size: 3vw;
+      opacity: 0.8;
+      margin-top: 15px;
+      padding-bottom: 15px;
+     }
+    
+     .phone-hisoty-cart-btn {
+      height: 20px;
+      background-color: black;
+      color: white;
+     }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 1% 0 1% 3%;
+    
+    li {
+      margin-right: 3%;
+      
+      a {
+         color: white;
+         font-size: 1.5vw;
+      }
+      
+      a:hover {
+         text-decoration: none;
+         color: white;
+      }
+    }
+  }
+}
+
+
+/* 携帯用のユーザー編集画面 */
+.phone-user-edit-form {
+    
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 10%;
+
+    
+    label {
+        float: left;
+        margin-left: 15%;
+        margin-bottom: 0;
+    }
+    
+    .form-control {
+        width: 70%;
+        margin: 0 auto;
+    }
+    
+    .phone-login-btn {
+        background-color: black;
+        color: white;
+    }
+}
+
+
+/* ログイン画面　*/
+.login-form-container {
+    z-index: 1;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    
+    .login-form-right {
+        width: 40%;
+        padding: 3% 5%;
+        background-color: #f5f5f5;
+        
+        .form-group {
+            margin-top: 10%;
+        }
+        
+        .login-btn {
+            margin-top: 12%;
+            width: 100%;
+        }
+        
+        .user-create-btn {
+            margin-top: 30%;
+        }
+        
+        .login-btn {
+            background-color: black;
+            color: white;
+        }
+        
+        a {
+         color: black;
+         font-size: 1vw;
+        }
+        
+        .checkbox {
+            margin-left: 5%;
+        }
+    }
+    
+    .pc-login-form-left {
+        width: 60%;
+        background-color: #000000e0;
+    }
+}
+
+
+/*　ユーザー作成画面 */
+.create-form-container {
+    
+    z-index: 1;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    
+    .create-form-right {
+        width: 40%;
+        padding: 3% 5%;
+        background-color: #f5f5f5;
+        
+        
+        label {
+            
+          float: left;
+        }
+        
+        .login-btn {
+            background-color: black;
+            color: white;
+            width: 100%;
+        }
+    }
+    
+    .pc-login-form-left {
+        width: 60%;
+        background-color: #000000e0;
+    }
+}
+
+
+
+/* ipad未満のCSS */
+@media (max-width: 767px) {
+    
+  .shop-info-container {
+     h3 {
+       font-size: 6vw;  
+     } 
+     
+     p {
+       font-size: 4vw;
+     }
+     
+     a {
+       width: 72vw;
+       font-size: 4vw;
+       padding: 5vw;
+     }
+  }
+  
+  .history-container {
+    display: none;
+  }
+  
+  .pc-header-list-wrapper {
+    display: none;
+  }
+  
+  .login-form-container {
+      
+      .pc-login-form-left {
+          display: none;
+      }
+      
+      .login-form-right {
+          width: 100%;
+          
+         a {
+             font-size: 3vw;
+         }
+      }
+
+  }
+  
+  .create-form-container {
+      
+      .pc-login-form-left {
+          display: none;
+      }
+      
+      .create-form-right {
+          padding: 3% 10%;
+          width: 100%;
+      }
+  }
+  
+  footer {
+    ul {
+     li {
+      a {
+        font-size: 3vw;  
+      }
+     }   
+    }
+  }
+  
+  label {
+      font-size: 3vw;
+  }
+ 
+}
+
+
+/* ipad-pro以下のCSS */
+@media (max-width: 1024px) {
+ footer li {
+    margin-right: 10%;
+    padding: 3%;
+  }
+}
+
+
+/* ipad以上のCSS */
+@media (min-width: 768px) {
+    
+  .phone-history-container {
+    display: none;
+  }
+    
+  .top-image1 {
+    display: block;
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: 50% 37%;
+  }
+    
+  .phone-header-list-wrapper {
+      display: none;
+  }
+   
+  .phone-header-wrapper {
+      display: none;
+  }
+  
+  .woman-list-wrapper {
+      display: none;
+  }
+  
+  .mens-list-wrapper {
+      display: none;
+  }
+  
+  .header-wrapper {
+      display: block;
+  }
+  
+
+  .shop-service-container {
+    padding-bottom: 2vw;
+    
+    h3 {
+     font-size: 2vw;
+     padding-top: 2vw;
+    }
+     
+    .shop-service-info {
+        
+      p {
+        padding: 0;  
+        margin-top: 3vw;
+        font-size: 1.2vw;
+        display: block;
+      }
+    }
+   
+  }
+  
+  footer a {
+    font-size: 30px;
+    margin-right: 20px;
+    font-family: serif;
+  }
+    
+  .phone-login-form {
+    display: none;
+  }
+  
+  .phone-user-create-form {
+    display: none;
+  }
+  
+  
+}
+
+

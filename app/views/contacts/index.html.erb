@@ -1,0 +1,32 @@
+<div class="admin-wrapper">
+ 
+ <%= render 'admin/list' %>
+ 
+ <div class="admin-right">
+  <div class="list-wrapper">
+   <h3 class="center">問い合わせ一覧</h3>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">件名</th>
+      <th scope="col">日時</th>
+     </tr>
+    </thead>
+    
+    <tbody>
+     <% @contacts.each do |contact| %>
+    　 <tr>
+    　  <th scope="row"><%= contact.id %></th>
+    　  <td><%= link_to  contact.email, "/admin/contats/#{contact.id}" %></td>
+    　  <td><%= link_to contact.subject, contact_path(contact.id), class: "word-wrap" %></td>
+    　  <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    　</tr>
+     <% end %>
+    </tbody>
+   </table>
+   <%= paginate @contacts %> 
+  </div>
+ </div>
+</div>

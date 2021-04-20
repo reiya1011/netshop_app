@@ -1,0 +1,45 @@
+<div class="item-show-wrapper">
+ <div class="item-show-container">
+  <div class="item-show-left-wrapper">
+  
+　 <% if request.referer&.include?(likes_path) %>
+    <%= link_to likes_path do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% elsif request.referer&.include?(admin_home_path) %>
+    <%= link_to admin_home_path do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% elsif request.referer&.include?(admin_private_items_path) %>
+    <%= link_to admin_private_items_path do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% elsif request.referer&.include?(purchase_index_path) %>
+    <%= link_to purchase_index_path do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+   
+   <% elsif @info.gender == "mens" %>
+    <%= link_to item_mens_path(@info.category) do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% elsif @info.gender == "woman" %>
+    <%= link_to item_woman_path(@info.category) do %>
+     <%= image_tag asset_path('item_show_back_image.png'), class: 'back-image' %> 
+    <% end %>
+    
+   <% end %>
+ 
+   <%= render 'items/item_show_left' %>
+  </div>
+ 
+  <div class="item-show-right-wrapper">
+   <%= render 'items/item_show_right' %>
+  </div>
+
+ </div>
+</div>

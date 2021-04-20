@@ -1,0 +1,51 @@
+<div class="purchase-history-wrapper">
+  
+  <h2 class="center serif">購入履歴</h2>
+   
+   <% @buy_infos.each do |buy_info| %>
+    <% @item = buy_info.item %>
+     <p class="purchase-date"><%= "購入日#{buy_info.created_at.strftime("%Y-%m-%d %H:%M")}" %></p>
+     
+     <div class="purchase-history-item-container">
+   
+      <div class="purchase-history-item-left">
+       <%= image_tag(@item.image) %>
+      </div>
+ 
+      <div class="purchase-history-item-right">
+       <%= link_to @item.name, @item %>
+       <p><%= "¥#{@item.price}" %></p>
+       <p><%= "数量:#{buy_info.quantity}" %></p>
+      
+       <div class="purchase-history-like-form">
+        
+        <% if current_user.liking.include?(@item) %>
+         <%= form_with(model: current_user.likes.find_by(item_id: @item.id),html: { method: :delete }, local: true) do |f| %>
+          <input type="submit" class="fas fa-heart" value="&#xf004;">
+         <% end %>
+        <% else %>
+         <%= form_with(model: current_user.likes.build, local: true) do |f| %>
+          <div><%= hidden_field_tag :item_id, @item.id %></div>
+          <input type="submit" class="far fa-heart" value="&#xf004;">
+         <% end %>
+        <% end %>
+       
+       </div>
+      </div>
+      
+     </div>
+    
+     <div class="purchase-history-active-form">
+     
+      <div class="purchase-history-active-form-left">
+       <%= form_with(url: carts_path, method: :post, local: true) do |f| %>
+        <div><%= hidden_field_tag :item_id, @item.id %></div>
+        <%= f.submit "もう一度購入する", class: "cart-btn" %>
+       <% end %>
+      </div>
+     
+     </div>
+    <% end %>
+    <%= paginate @buy_infos %>
+</div>
+  

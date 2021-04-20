@@ -1,0 +1,4 @@
+<%= form_with(url: cart_path, html: { method: :delete }, local: true) do |f| %>
+  <div><%= hidden_field_tag :item_id, item.id %></div>
+   <input type="submit" class="fa fa-times-circle" value="&#xf057;">
+<% end %>

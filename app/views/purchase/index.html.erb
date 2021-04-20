@@ -1,0 +1,52 @@
+<div class="admin-wrapper">
+
+ <%= render 'admin/list' %>
+ 
+ <div class="admin-right">
+  <div class="list-wrapper">
+   <h3 class="center">発送管理</h3>
+   
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="col">お客様情報</th>
+      <th scope="col">商品名</th>
+      <th scope="col">購入数</th>
+      <th scope="col">発送状況</th>
+      <th scope="col">発送管理</th>
+      <th scope="col">購入日</th>
+     </tr>
+    </thead> 
+    
+    <tbody>
+     <% @infos.each do |info| %>
+      <tr>
+       <th scope="row"><%= info.id %></td>
+       <td><%= link_to info.u_info.name,  purchase_path(info.u_info.id) %></td>
+       <td><%= link_to info.item.name, item_path(info.item) %></td>
+       <td><%= info.quantity %></td>
+       <% if info.shipping? %>
+        <td>発送済み</td>
+       <% else %>
+        <td>未発送</td>
+       <% end %>
+       <% if info.shipping? %>
+        <td></td>
+       <% else %>
+        <td>
+         <%= form_with(url: shipping_path, local: true) do |f| %>
+         <%= f.hidden_field :info_id, :value => info.id %>
+         <%= f.submit "発送", class: "shipping-btn" %>
+         <% end %>
+        </td>
+       <% end %>
+       <td><%= info.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+   <%= paginate @infos %>
+  </div>
+ </div>
+</div>

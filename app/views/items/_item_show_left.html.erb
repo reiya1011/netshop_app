@@ -1,0 +1,22 @@
+<% if @item.images.count == 1 %>
+ <div class="item-images1">
+  <% @item.images.each do |image| %>
+    <%= image_tag(image) %>
+  <% end %>
+ </div>
+ 
+<% else %>
+
+ <div class="slider-for">
+  <% @item.images.reverse.each do |image| %>
+   <%= image_tag(image) %>
+  <% end %>
+ </div>
+ 
+ <div class="slider-nav">
+  <% @item.images.reverse.each do |image| %>
+   <%= image_tag(image, :class => "nav-image") %>
+  <% end %>
+ </div>
+ 
+<% end %>

@@ -1,0 +1,118 @@
+/* 買い物ページのCSS */
+
+.shopping-info-wrapper {
+  display: flex;
+  border: 1px solid #DCDCDC;
+  margin-top: 15px;
+}
+
+.shopping-info-left {
+  text-align: center;
+  width: 70%;
+  border-right: 1px solid #DCDCDC;
+  position: relative;
+}
+
+.shopping-info-right {
+  width: 30%;
+}
+
+.shopping-path {
+
+  display: block;
+  border: 1px solid black;
+  width: 250px;
+  height: 36px;
+  padding-top: 8px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  background-color: black;
+  margin: 50px auto;
+}
+
+.shopping-path:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+.shopping-item-info {
+  margin-top: 5px;
+  display: flex;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.shopping-item-info img {
+  width: 30%;
+  object-fit: cover;
+}
+
+.shopping-item-info ul {
+  width: 70%;
+  margin: 0;
+  padding-top: 7%;
+  list-style: none;
+  font-size: 10px;
+}
+
+.shopping-item-info-list {
+  margin-bottom: 20px;
+}
+
+.edit-building-name-field {
+  margin-right: 93px;
+}
+
+.shopping-price-info {
+  margin-top: 20px;
+  font-size: 1vw;
+}
+
+.total-price {
+  margin-right: 10px;
+}
+
+.shopping-btn {
+  margin: 5% auto;
+  display: block;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: black;
+  width: 50%;
+  font-size: 1vw;
+}
+
+.shopping-btn:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.postage {
+  margin-right: 15px;
+}
+
+.subtotal {
+  margin-right: 15px;
+}
+
+.total-price-wrapper {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 2%;
+  border-top: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+  margin-bottom: 10%;
+  text-align: right;
+}
+
+.order-user-info-wrapper {
+  border: 1px solid;
+}
+
+.fa-tenge {
+  margin-right: 3%;
+}
+

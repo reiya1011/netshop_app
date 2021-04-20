@@ -1,0 +1,10 @@
+<!-- ユーザーページのメニュー欄 -->
+
+ <ul>
+  <li><%= link_to "アカウント情報", user_path(current_user) %></li>
+  <li><%= link_to "購入履歴", history_purchase_index_path %></li>
+  <li><%= link_to "お気に入り", likes_path %></li>
+  <li><%= link_to "ショッピングバッグ", current_cart %></li>
+  <li><%= link_to "ログアウト", logout_path(current_user), method: :delete %></li>
+ </ul>
+ <div class="phone-user-info-list-under"></div>

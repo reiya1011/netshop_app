@@ -1,0 +1,88 @@
+/* gemや便利系のCSS */
+
+html {
+  max-height: 100%;
+  font-size: 3.125vw;
+}
+
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+
+.top-wrapper {
+  min-height: 90vh;
+  position: relative;
+}
+
+
+.clear {
+  clear: left
+}
+
+
+.display-none {
+  display: none;
+}
+
+
+.display-block {
+  display: block;
+}
+
+
+.black {
+  color: black;   
+}
+
+
+.serif {
+  font-family: serif;
+}
+
+
+.underline {
+  text-decoration: underline;
+}
+
+
+.margin40 {
+  margin-top: 40px;
+}
+
+.center {
+  text-align: center;
+}
+
+.top-title {
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.word-wrap {
+  word-break: break-word;
+}
+
+.word-break {
+  word-break: keep-all;
+}
+
+.fa-rotate-45 {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.pagination {
+  display: block !important;
+  text-align: center;
+  margin: 0 !important;
+  padding: 10px 0 !important;
+}
+
+
+

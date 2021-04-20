@@ -1,0 +1,49 @@
+
+ 　　<%= form_with(url: user_info_index_path, local: true) do |f| %>
+ 
+  　　 <div><%= hidden_field_tag :id, current_cart.id %></div>
+     
+     <div class="user-addressee-wrapper">
+        <div class="form-group">
+      <%= f.label :お名前 %>
+      <%= f.text_field :name, class: "form-control" %>
+     </div>
+   
+     <div class="form-group">
+      <%= f.label :電話番号 %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+     </div>
+    
+     <div class="form-group">
+      <%= f.label :郵便番号 %>
+      <%= f.text_field :postal_code, class: "form-control" %>
+     </div>
+ 
+     <div class="form-group">
+      <%= f.label :都道府県 %>
+      <%= f.text_field :prefectures, class: "form-control" %>
+     </div>
+  
+     <div class="form-group"> 
+      <%= f.label :市町村区 %>
+      <%= f.text_field :municipal_district, class: "form-control" %>
+     </div>
+   
+     <div class="form-group">
+      <%= f.label :番地 %>
+      <%= f.text_field :street_bunch, class: "form-control" %>
+     </div>
+   
+     <div class="form-group">
+      <%= f.label :建物名（任意） %>
+      <%= f.text_field :building_name, class: "form-control" %>
+     </div>
+     
+     <div class="center">
+      <%= f.submit "保存", class:"user-info-btn" %>
+     </div>
+    
+     </div>
+
+    <% end %>
+  

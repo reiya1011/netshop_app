@@ -1,0 +1,582 @@
+.phone-user-menu {
+  font-size: 3vw;
+  margin: 0;
+  padding: 2%;
+  width: 96%;
+  margin: 2%;
+  background-color: white;
+}
+
+.phone-user-info-list-wrapper {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000e0;
+}
+
+/*　ユーザーの詳細ページCSS */
+.user-show-wrapper {
+  min-height: 90vh;
+  position: relative;
+  
+  /* トップ画像 */
+  .image-container {
+    height: 20vh;
+        
+    img {
+      height: 20vh;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    } 
+  }
+  
+  
+  .user-info-wraper {
+    
+    /* 見出し */
+    .user-info-title {
+      background-color: #DCDCDC;
+      padding: 2% 2%;
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+    
+    
+    .user-info-container {
+       
+       .user-info-left {
+         padding-right: 3%;
+         min-height: 50vw;
+         margin-top: 0%;
+         padding-bottom: 2%;
+         
+        .user-info-email {
+           padding: 5% 2%;
+           border: 1px solid #DCDCDC;
+ 
+           p {
+             margin-bottom: 4%;
+           }
+           
+         }
+         
+        .user-info-btn {
+          display: inline-block;
+          margin-top: 2%;
+          color: white;
+          background-color: black;
+          width: 100%;
+        }
+         
+         
+        .user-addressee {
+           border: 1px solid #DCDCDC;
+           padding: 0 5%;
+           
+           .addressee-title {
+             display: inline-block;
+             width: 25%;
+           }
+         }
+         
+         /* メールアドレス */
+         .user-edit-form {
+           
+           
+           h3 {
+             background-color: #DCDCDC;
+             padding: 2%;
+             margin-top: 1%;
+           }
+           
+           form {
+             background-color: white;
+             padding: 0 5%;
+           }
+           
+           .form-group {
+             margin-bottom: 5%;
+           }
+           
+           .edit-form-group {
+             margin-top: -5%;
+           }
+           
+           .account-edit-btn {
+             background-color: black;
+             color: white;
+             width: 100%;
+           }
+           
+          label {
+          float: left;
+          }
+           
+
+         }
+       }
+       
+       
+       .user-addressee-wrapper {
+          background-color: white;
+          padding: 0 2%;
+          margin-top: -4%;
+          padding-bottom: 14%;
+          
+          label {
+          float: left;
+          }
+       }
+       
+       
+       .user-info-list{
+         width: 30%;
+         margin: 2% 2%;
+         padding-left: 3%;
+         border: 1px solid #DCDCDC;
+         background-color: white;
+         min-height: 93vh;
+         
+         h2 {
+           font-size: 2vw;
+           margin-bottom: 10%;
+         }
+         
+         .user-info-list-container {
+           font-size: 1.2vw;
+         }
+         
+         ul {
+           padding: 0;
+         }
+         
+         li {
+           list-style: none;
+           padding-top: 5%;
+           
+           a {
+             color: black;
+           }
+         }
+       }
+    }
+  }
+
+}
+
+/* ユーザーの購入履歴ページCSS */
+.purchase-history-wrapper {
+  
+  h2 {
+    margin-bottom: 2%;
+    padding-top: 20px;
+    margin-top: 0;
+  }
+  
+  .purchase-date {
+    width: 70%;
+    margin: 0 auto;
+    padding: 1%;
+    background-color: #DCDCDC;
+    color: black;
+    font-family: serif;
+  }
+  
+  .purchase-history-item-container {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #DCDCDC;
+    
+    .purchase-history-item-left {
+      width: 30%;
+      
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .purchase-history-item-right {
+      width: 70%;
+      position: relative;
+      
+      .fa-heart {
+        position: absolute;
+        top: 5%;
+        right: 0%;
+        background-color: white;
+        border: none;
+      }
+      
+      p {
+        margin-top: 2vw;
+      }
+      
+      a {
+        margin-top: 4vw;
+        display: block;
+        color: black;
+      }
+    }
+  }
+  
+  .purchase-history-active-form {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    
+    .purchase-history-active-form-left {
+      width: 100%;
+      
+      .cart-btn {
+        height: 5vw;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        color: black;
+        border: 1px solid #DCDCDC;
+      }
+    }
+  }
+}
+
+/* ipad以上のCSS */
+@media (min-width: 768px) {
+ 
+ .phone-user-menu {
+   display: none;
+ }
+ .phone-shopping-info-wrapper {
+   display: none;
+ }
+ .phone-user-info-list-wrapper {
+   display: none;
+ }
+ .phone-user-info-list-container {
+   display: none;
+ }
+  
+ .pc-shopping-info-wrapper {
+  display: flex;
+  
+  h3 {
+    font-size: 1.5vw;
+    margin-bottom: 10%;
+  }
+  
+  p {
+    font-size: 1vw;
+  }
+  
+  .cart-back-image {
+    width: 3%;
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    border: 1px solid #DCDCDC;
+  }
+  
+  .building-name-title {
+    float: left;
+  }
+  
+  .user-info-wrapper {
+    width: 60%;
+    margin: 3% 5%;
+    border: 1px solid;
+    padding: 0 5%;
+    padding-bottom: 3%;
+    
+    .user-addressee-container {
+      padding-left: 20%;
+      
+      .addressee-title {
+        display: inline-block;
+        width: 15%;
+      }
+    }
+    
+    .user_info_danger-alert {
+      text-align: center;
+      color: red;
+      margin-top: -5%;
+      margin-bottom: 5%;
+      font-size: 1vw;
+    }
+  }
+  
+  .shopping-item-wrapper {
+   width: 40%;
+   padding: 3% 5%;
+  }
+ }
+ 
+ .user-info-btn {
+   background-color: black;
+   color: white;
+   margin-top: 3%;
+   float: right;
+   width: 100%;
+   height: 35px;
+ }
+ 
+ .user-info-container {
+   display: flex;
+   
+   .user-info-link {
+     color: black;
+     font-size: 1vw;
+   } 
+ 
+   .user-info-left {
+     width: 70%;
+     margin: 3% 0;
+   }
+ }
+ 
+ .user-info-title {
+   font-size: 1.5vw;
+ }
+ 
+ .purchase-history-wrapper {
+    width: 70%;
+    .purchase-date {
+      font-size: 1vw;
+    }
+    
+    .fa-heart {
+       font-size: 2vw;
+     }
+     
+    .purchase-history-item-right {
+      p a {
+        font-size: 3vw;
+      }
+    }
+  
+    .cart-btn {
+     font-size: 1vw;
+   }
+  }
+  
+ .user-like-wrapper {
+   width: 70%;
+ }
+}
+/* ipad未満のCSS */
+@media (max-width: 767px) {
+   
+  .pc-shopping-info-wrapper {
+   display: none;
+  }
+ 
+  .phone-shopping-info-wrapper {
+    padding: 0 5%;
+    
+    
+    .user-addressee-container {
+      padding-left: 10%;
+      font-size: 3vw;
+      
+      p {
+        color: black;
+      }
+      
+      .addressee-title {
+        display: inline-block;
+        width: 20%;
+      }
+    }
+    
+    .user_info_danger-alert {
+      text-align: center;
+      color: red;
+      font-size: 2vw;
+      margin-bottom: 15px;
+    }
+    
+    .phone-shopping-item-info {
+      border: 1px solid #DCDCDC;
+      display: none;
+      margin-top: 1px;
+      
+      .phone-shopping-item-info-left {
+        width: 30%;
+        
+        img {
+         width: 100%;
+         object-fit: cover;
+        }
+      }
+  
+      .phone-shopping-item-info-right {
+        width: 70%;
+        
+        ul {
+         margin-bottom: 0;
+         list-style: none;
+         font-size: 3vw;
+       }
+      }
+    }
+    
+    h3 {
+      font-size: 4vw;
+      margin-top: 0;
+      padding: 5% 0;
+    }
+    
+    label {
+      float: left;
+      font-size: 3vw;
+    }
+    
+    .cart-item-price {
+      float: right;
+      font-size: 3vw;
+    }
+    
+    .total-price {
+      font-size: 3vw;
+    }
+    
+    .cart-back-image {
+      width: 7%;
+      position: absolute;
+      left: 1%;
+      top: 1%;
+      border: 1px solid #DCDCDC;
+    }
+    
+    .shopping-btn {
+      font-size: 3vw;
+    }
+    
+    .shopping-items-icon {
+      position: absolute;
+      right: 25%;
+      top: 4.6vw;
+      font-size: 4vw;
+      color: black;
+    }
+    
+    .user-info-link {
+      color: black;
+      font-size: 1vw;
+    }
+    
+  }
+  
+  .user-info-list {
+    display: none;
+  }
+  
+  .phone-user-info-list {
+    display: block;
+     padding-right: 3%;
+     padding-left: 2%;
+     span {
+       margin-right: 3%;
+     }
+  }
+  
+  .user-info-left {
+    width: 100%;
+    margin-top: 0;
+    padding: 0 2%;
+
+    
+    .user-info-link {
+      font-size: 3vw;
+      color: black;
+    }
+  }
+  
+  .phone-user-info-list-container {
+     background-color: white;
+     padding: 2%;
+     list-style: none;
+     border: 1px solid #DCDCDC;
+ 
+     ul {
+       list-style: none;
+       padding-left: 1%;
+      
+      a {
+       font-size: 4vw;
+       color: #333;
+       display: block;
+       padding-top: 3%;
+       padding-bottom: 3%;
+       border-bottom: 1px solid #DCDCDC;
+      }
+    }
+  }
+  
+  .order-user-info-wrapper {
+    margin-bottom: 10px;
+  }
+  
+  .user-info-btn {
+      background-color: black;
+      color: white;
+      margin-top: 3%;
+      width: 100%;
+      height: 35px;
+      margin-bottom: 10px;
+    }
+
+  .user-info-title {
+    font-size: 4vw;
+  }
+  
+  .user-addressee p {
+    font-size: 4vw;
+  }
+  
+  .user-info-email p {
+    font-size: 4vw;
+  }
+  
+  .purchase-history-wrapper {
+    
+    width: 100%;
+    
+    .purchase-date {
+      font-size: 3vw;
+    }
+    .fa-heart {
+      font-size: 4vw;
+    }
+    .purchase-history-item-right {
+      p a {
+        font-size: 3vw;
+      }
+    }
+    .cart-btn {
+      font-size: 3vw;
+    }
+  }
+}
+@media (max-width: 449px) {
+  
+  .phone-user-info-list {
+     padding-top: 2%;
+     margin-bottom: -6%;
+  }
+  
+}
+@media (min-width: 450px) {
+  
+  .phone-user-info-list {
+     padding-top: 1%;
+     margin-bottom: -3%;
+  }
+}
+

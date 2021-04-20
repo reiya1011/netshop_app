@@ -1,0 +1,112 @@
+
+/* ショッピングカートページのCSS */
+.cart-form-wrapper {
+  
+  background-color: white;
+ 
+ h3 {
+  margin: 0px;
+  padding-top: 5%;
+ }
+ 
+ .cart-item-container {
+    width: 100%;
+    display: flex;
+    border: 1px solid #DCDCDC;
+    padding: 5px;
+    
+    
+    .cart-item-left {
+        width: 50%;
+        
+        img {
+           width: 50%;
+           margin: 0 auto;
+           display: block;
+        }
+        
+    }
+    
+ .cart-item-right {
+    width: 50%;
+    position: relative;
+    
+    .cart-item-stocks-container {
+      display: flex;
+      height: 10px;
+      
+      .cart-item-stocks-left {
+        width: 20%;
+      }
+      
+      .cart-item-stocks-right {
+        width: 80%;
+      }
+    }
+    
+    .cart-item-info {
+      position: absolute;
+      top: 33%;
+    }
+    
+    .item-stocks-alert {
+      color: red;
+      position: absolute;
+      bottom: 16%;
+      left: 38%;
+    }
+    
+    a {
+      display: block;
+      margin-top: 10%;
+      color: black;
+    }
+        
+    p {
+      font-family: p;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+        
+    .fa-trash-alt {
+      position: absolute;
+      top: 5%;
+      right: 3%;
+    }
+        
+    .item-stocks {
+      position: absolute;
+      bottom: 16%;
+      left: 0%;
+    }
+   }
+ }
+}
+
+.cart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  
+  
+  .pc-login-form-left {
+      width: 60%;
+      background-color: #000000e0;
+  }
+  
+  .cart-right {
+      width: 40%;
+      background-color: white;
+      border-left: 1px solid #DCDCDC;
+  }
+}
+
+/* ipad未満のCSS */
+@media (min-width: 768px) {
+  .shopping-form-wrapper {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

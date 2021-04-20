@@ -1,0 +1,104 @@
+<div class="admin-wrapper">
+ 
+ <%= render 'admin/list' %>
+  
+ <div class="admin-right">
+  <h3 class="center">商品一覧</h3>
+  <div class="pc-admin-item-list">
+   <table class="table">
+  　 <thead>
+     <tr>
+      <th scope="col">ID</th>
+      <th scope="col">商品名</th>
+      <th scope="col">性別</th>
+      <th scope="col">カテゴリー</th>
+      <th scope="col">プライス</th>
+      <th scope="col">在庫</th>
+      <th scope="col">公開管理</th>
+      <th scope="col">編集</th>
+      <th scope="col">削除</th>
+     </tr>
+    </thead>
+   <tbody>
+    <% @items.each do |item|  %>
+     <% unless item.release? %>
+      <% @info = item.info[0] %>
+      <% @count = [] %> 
+      <% @buy_infos = BuyInfo.where(item_id: item.id) %>
+       
+      <% @buy_infos.each do |info| %>
+       <% @count << info.quantity %>
+      <% end %>
+   
+      <tr>
+       <th scope="row"><%= item.id %></th>
+       <td><%= link_to item.name, item %></td>
+       <td><%= @info.gender %></td>
+       <td><%= @info.category %></td>
+       <td><%= item.price %></td>
+       <td><%= item.stocks %></td>
+       <% if item.release? %>
+        <td><%= link_to "非公開にする", release_path(item), method: :delete %></td>
+       <% else %>
+        <td><%= link_to "公開する", release_path(item) %></td>
+       <% end %>
+        <td><%= link_to "編集", edit_item_path(item) %></td>
+        <td><%= link_to "削除", item, method: :delete %></td>
+       </tr>
+      <% end %>
+     <% end %>
+    </tbody>
+ 　</table>
+  </div>
+  
+  <div class="phone-admin-item-list display-none">
+   <table class="table">
+    <% @items.each do |item|  %>
+     <% @info = item.info[0] %>
+     <% @count = [] %> 
+     <% @buy_infos = BuyInfo.where(item_id: item.id) %>
+       
+     <% @buy_infos.each do |info| %>
+      <% @count << info.quantity %>
+     <% end %>
+     
+     <tr>
+　    <th scope="col">ID</th>
+      <td><%= item.id %></td>
+　    <th scope="col">商品名</th>
+      <td><%= item.name %></td>
+     </tr>
+     <tr>
+      <th scope="col">ジェンダー</th>
+      <td><%= @info.gender %></td>
+      <th scope="col">カテゴリー</th>
+      <td><%= @info.category %></td>
+     </tr>
+     <tr>
+      <th scope="col">プライス</th>
+      <td><%= item.price %></td>
+      <th scope="col">在庫</th>
+      <td><%= item.stocks %></td>
+     </tr>
+     <tr>
+      <th scope="col">売上</th>
+      <td><%= @count.sum %></td>
+      <th scope="col">公開管理</th>
+      <% if item.release? %>
+       <td><%= link_to "非公開にする", release_path(item), method: :delete %></td>
+      <% else %>
+       <td><%= link_to "公開する", release_path(item) %></td>
+      <% end %>
+     </tr>
+     <tr class="phone-admin-list-bottom">
+      <th scope="col">編集</th>
+      <td><%= link_to "編集", edit_item_path(item) %></td>
+      <th scope="col">削除</th>
+      <td><%= link_to "削除", item, method: :delete %></td>
+     </tr>
+    <% end %>
+   </table>
+  </div>
+  <%= paginate @items %>
+ </div>
+</div>
