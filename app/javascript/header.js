@@ -5,17 +5,8 @@ document.addEventListener("turbolinks:load", function() {
 　setTimeout("$('.alert-danger').fadeOut('slow')", 3000)
 　setTimeout("$('.alert-success').fadeOut('slow')", 3000)
 　
-　$(function() {
-    var slider = $('.example'); //最初に指定していたほうが余計なオブジェクトを作らないので軽くなる
-    slider.slick({
-       arrows:false,
-       dots:true,
-       infinite: false,
-    });
-    $('.example_fire').click(function () { //タブなど切り替えの要素を指定
-       slider.slick('setPosition'); //今回のキモ「setPosition」
-    });
-  });
+　
+  var slider = $('.example'); 
 　
 　/* スライドショーの設定 */
 　$('.slider-for').slick({
@@ -41,6 +32,11 @@ document.addEventListener("turbolinks:load", function() {
       autoplaySpeed: 4000, //再生スピード
       slidesToShow: 1,
       arrows: true,
+  });
+  
+  
+  $('.example_fire').click(function () { //タブなど切り替えの要素を指定
+       slider.slick('setPosition'); //今回のキモ「setPosition」
   });
   
   
