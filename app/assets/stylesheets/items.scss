@@ -114,7 +114,6 @@
 }
 
 .item-show-container {
-  display: flex;
   border: 1px solid #DCDCDC;
 }
 
@@ -243,7 +242,6 @@
 }
 
 
-
 @media (max-width: 767px) {
   
   .items-wrapper {
@@ -258,10 +256,15 @@
 
 }
 
+@media (min-width: 1026px) {
+  .item-show-container {
+     display: flex;
+  }
+}
 @media (max-width: 1025px) {
   
   .item-show-container {
-    display: block;
+     display: block;
     
    
    .slider-for {
