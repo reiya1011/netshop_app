@@ -217,16 +217,11 @@ document.addEventListener("turbolinks:load", function() {
 　
 　function checkBreakPoint() {
 　  
-　  // URLを取得
-    var url = new URL(window.location.href);
-    // URLSearchParamsオブジェクトを取得
-    var params = url.searchParams;
     // windowのサイズを取得　
   　var w = $(window).width();
   　
-  　
   	if (w <= 767) {
-	   if(document.URL.match(/items/) && params.has('id')){ 
+	   if(document.URL.match(/items/)){ 
 　     if (window.name != "any") {
          window.location.reload();
          window.name = "any";}
