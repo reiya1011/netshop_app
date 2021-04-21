@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
     
-    before_action :logged_in_user, only: [:index, :show, :email_show]
-    before_action :admin_user, only: [:show, :index, :email_show]
+    before_action :logged_in_user, only: [:index, :show]
+    before_action :admin_user, only: [:show, :index]
     
    def new 
      @contact = Contact.new
@@ -16,10 +16,6 @@ class ContactsController < ApplicationController
      end
    end
    
-   def email_show
-     @contact = Contact.find_by(id: params[:id])
-     @contacts = Contact.where(email: @contact.email).page(params[:page]).per(10)
-   end
   
    def index
      @contacts = Contact.page(params[:page]).per(10)

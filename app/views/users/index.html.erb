@@ -12,8 +12,7 @@
      <tr>
       <th scope="col">ID</th>
       <th scope="col">メール</th>
-      <th scope="col">名前</th>
-      <th scope="col">住所登録</th>
+      <th scope="col">情報</th>
       <th scope="col">登録日</th>
       <th scope="col">削除</th>
      </tr>
@@ -26,9 +25,7 @@
        <td><%= user.email %></td>
        <% if user.u_info.empty? %>
         <td>未登録</td>
-        <td>未登録</td>
        <% else %>
-        <td><%= user.u_info[0].name %></td>
         <td><%= link_to "登録済み", purchase_path(user.u_info[0].id) %></td>
        <% end %>
        <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>

@@ -1,8 +1,8 @@
 class PurchaseController < ApplicationController
     
     before_action :specific_info, :inventory_check, only: [:create]
-    before_action :logged_in_user, only: [:index, :show, :shipping]
-    before_action :admin_user, only: [:index, :show, :shipping]
+    before_action :logged_in_user, only: [:index, :show]
+    before_action :admin_user, only: [:index, :show]
     
     def index
      @infos = BuyInfo.page(params[:page]).per(10)
@@ -29,13 +29,6 @@ class PurchaseController < ApplicationController
       redirect_to root_path
     end
     
-    
-    def shipping
-     @info = BuyInfo.find_by(id: params[:info_id])
-     @info.shipping = true
-     @info.save
-     redirect_to request.referrer || purchase_index_path
-    end
     
     
     def history 

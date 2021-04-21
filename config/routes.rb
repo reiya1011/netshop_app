@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  post '/shipping', to: 'purchase#shipping'
   get '/admin/home', to: 'admin#home'
-  get '/admin/contats/:id', to: 'contacts#email_show'
   
   resources :items do
    collection do
