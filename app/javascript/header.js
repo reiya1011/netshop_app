@@ -215,15 +215,14 @@ document.addEventListener("turbolinks:load", function() {
 　
 　/* 商品詳細ページの画像がうまく読み込まれない為リロード(携帯のみ) */
 　
- 
-　if(document.URL.match(/items/)){ 
+　/* if(document.URL.match(/items/)){ 
 　 if (window.name != "any") {
      window.location.reload();
      window.name = "any";}
    else {
      window.name = "";
    }
-　}
+　} */
 　
 　
   
