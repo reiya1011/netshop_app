@@ -5,6 +5,18 @@ document.addEventListener("turbolinks:load", function() {
 　setTimeout("$('.alert-danger').fadeOut('slow')", 3000)
 　setTimeout("$('.alert-success').fadeOut('slow')", 3000)
 　
+　$(function() {
+    var slider = $('.example'); //最初に指定していたほうが余計なオブジェクトを作らないので軽くなる
+    slider.slick({
+       arrows:false,
+       dots:true,
+       infinite: false,
+    });
+    $('.example_fire').click(function () { //タブなど切り替えの要素を指定
+       slider.slick('setPosition'); //今回のキモ「setPosition」
+    });
+  });
+　
 　/* スライドショーの設定 */
 　$('.slider-for').slick({
       slidesToShow: 1,
@@ -215,14 +227,14 @@ document.addEventListener("turbolinks:load", function() {
 　
 　/* 商品詳細ページの画像がうまく読み込まれない為リロード(携帯のみ) */
 　
-　/* if(document.URL.match(/items/)){ 
+　if(document.URL.match(/items/)){ 
 　 if (window.name != "any") {
      window.location.reload();
      window.name = "any";}
    else {
      window.name = "";
    }
-　} */
+　}
 　
 　
   
