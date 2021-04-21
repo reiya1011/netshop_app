@@ -13,13 +13,14 @@ $slick-loader-path: "./" !default;
 $slick-arrow-color: white !default;
 $slick-dot-color: black !default;
 $slick-dot-color-active: $slick-dot-color !default;
-$slick-prev-character: image-url("right_03.jpg") !default;
-$slick-next-character: image-url("left_03.jpg") !default;
+$slick-prev-character: "\f104" !default;
+$slick-next-character: "\f105" !default;
 $slick-dot-character: "\2022" !default;
 $slick-dot-size: 6px !default;
 $slick-opacity-default: 0.75 !default;
 $slick-opacity-on-hover: 1 !default;
 $slick-opacity-not-active: 0.25 !default;
+
 
 @function slick-image-url($url) {
     @if function-exists(image-url) {
@@ -100,29 +101,25 @@ $slick-opacity-not-active: 0.25 !default;
     }
 }
 .slick-prev {
-     position: absolute;
-     top: 40%;
-     left: -28%;
-     width: 11%;
-     border: 1px solid;
     &:before {
+        font-weight: 900;
+        font-family: "Font Awesome 5 Free";
         content: $slick-prev-character;
+        color: black;
         [dir="rtl"] & {
-            content: $slick-next-character;
+            content: $slick-prev-character;
         }
     }
 }
 
 .slick-next {
-      position: absolute;
-      top: 40%;
-      right: -28%;
-      width: 11%;
-      border: 1px solid;
     &:before {
+        font-weight: 900;
+        font-family: "Font Awesome 5 Free";
         content: $slick-next-character;
+        color: black;
         [dir="rtl"] & {
-            content: $slick-prev-character;
+            content: $slick-next-character;
         }
     }
 }
@@ -193,9 +190,42 @@ $slick-opacity-not-active: 0.25 !default;
 }
 
 @media (max-width: 767px) {
-  .slick-prev,
+  .slick-prev {
+    position: absolute;
+    top: 45%;
+    left: 7%;
+    z-index: 1;
+  }
   .slick-next {
-    display: none;
-    position: fixed;
+    position: absolute;
+    top: 45%;
+    right: 7%;
+  }
+  .slick-prev:before,
+  .slick-next:before{
+      font-size: 10vw;
+      z-index: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .slick-next {
+    position: absolute;
+    top: 40%;
+    right: -28%;
+    width: 11%;
+    border: 1px solid;
+  }
+  .slick-prev {
+     position: absolute;
+     top: 40%;
+     left: -28%;
+     width: 11%;
+     border: 1px solid;
+  }
+  .slick-prev:before,
+  .slick-next:before{
+      font-size: 5vw;
+      
   }
 }
