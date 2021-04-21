@@ -1,11 +1,11 @@
 /*global $ */
 document.addEventListener("turbolinks:load", function() {
     
-  /* フラッシュメッセージの時間設定 */
+  // フラッシュメッセージの時間設定 
 　setTimeout("$('.alert-danger').fadeOut('slow')", 3000)
 　setTimeout("$('.alert-success').fadeOut('slow')", 3000)
 　
-　/* スライドショーの設定 */
+　// スライドショーの設定 
 　$('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -213,13 +213,20 @@ document.addEventListener("turbolinks:load", function() {
     
    });
 　
-　/* 商品詳細ページの画像がうまく読み込まれない為リロード(携帯のみ) */
+　// 商品詳細ページの画像がうまく読み込まれないのでURLが一致する場合にリロード(携帯のみ) 
 　
 　function checkBreakPoint() {
+　  
+　  // URLを取得
+    var url = new URL(window.location.href);
+    // URLSearchParamsオブジェクトを取得
+    var params = url.searchParams;
+    // windowのサイズを取得　
   　var w = $(window).width();
+  　
+  　
   	if (w <= 767) {
-	
-	   if(document.URL.match(/items/)){ 
+	   if(document.URL.match(/items/) && params.has('id')){ 
 　     if (window.name != "any") {
          window.location.reload();
          window.name = "any";}
@@ -230,22 +237,12 @@ document.addEventListener("turbolinks:load", function() {
 	  } 
 　}
 　
+　// リサイズの度に
 　$(window).resize(function(){
   	checkBreakPoint();
   });
   // 初回チェック
   checkBreakPoint();
-  
-　　/*if(document.URL.match(/items/)){ 
-　 if (window.name != "any") {
-     window.location.reload();
-     window.name = "any";}
-   else {
-     window.name = "";
-   }
-　} */
-　
-　
   
   
 });
