@@ -1,21 +1,5 @@
 class UserInfoController < ApplicationController
  
- def new 
- end
- 
- def edit
-   @shopping_info = ShoppingInfo.find_by(cart_id: current_cart.id)
-   @info = @shopping_info.u_info
- end
- 
- 
- def show 
-  if @shopping_info = ShoppingInfo.find_by(cart_id: current_cart.id)
-   @info = @shopping_info.u_info
-  end
- end
-    
-    
  def create 
   @u_info = UInfo.new(u_info_params)
   if @u_info.save

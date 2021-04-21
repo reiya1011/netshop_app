@@ -13,31 +13,29 @@ class ShoppingController < ApplicationController
   end
       
   def create 
-  @u_info = UInfo.new(u_info_params)
-  if @u_info.save
-   if logged_in?
-    @u_info.user_info.create(user_id: current_user.id)
-    @u_info.shopping_info.create(cart_id: current_cart.id)
-    redirect_to order_shopping_index_path
-   else
-    @u_info.shopping_info.create(cart_id: current_cart.id)
-    redirect_to order_shopping_index_path
-   end
-  else
-   flash[:user_info_danger] = "情報の登録に失敗しました。入力に誤りがあります"
-   redirect_to request.referrer || shopping_path(current_cart)
-  end
+    @u_info = UInfo.new(u_info_params)
+    if @u_info.save
+      if logged_in?
+        @u_info.user_info.create(user_id: current_user.id)
+        @u_info.shopping_info.create(cart_id: current_cart.id)
+        redirect_to order_shopping_index_path
+      else
+        @u_info.shopping_info.create(cart_id: current_cart.id)
+        redirect_to order_shopping_index_path
+      end
+    else
+      flash[:user_info_danger] = "情報の登録に失敗しました。入力に誤りがあります"
+      redirect_to request.referrer || shopping_path(current_cart)
+    end
   end
  
   def update
- 
    if @info.update(u_info_params)
-    redirect_to order_shopping_index_path
+     redirect_to order_shopping_index_path
    else 
-    flash[:danger] = "情報の更新に失敗しました。入力に誤りがあります"
+     flash[:danger] = "情報の更新に失敗しました。入力に誤りがあります"
      redirect_to request.referrer || shopping_path(current_cart)
    end
-   
   end
   
   def order

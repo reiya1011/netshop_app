@@ -1,0 +1,10 @@
+<%= link_to shopping_path(current_cart) do %>
+   <%= image_tag asset_path('item_show_back_image.png'), class: 'cart-back-image' %>
+<% end %>
+   
+<h3 class="serif user-info-title center">お届け情報</h3>
+<div class="user-addressee-container">
+ <p><i class="fas fa-tenge"></i><%= @user_info.postal_code %></p>
+ <p><%= @user_info.prefectures %><%= @user_info.municipal_district %><%= @user_info.street_bunch %><%= @user_info.building_name %></p>
+</div>
+<br><%= link_to '注文を確定する', purchase_index_path, method: :post, class: "shopping-btn" %></br>

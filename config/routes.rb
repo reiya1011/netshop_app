@@ -31,15 +31,13 @@ Rails.application.routes.draw do
   
 
   resources :account_activations, only: [:edit]
-  resources :users
+  resources :users, only:[:show, :index, :create, :destroy]
   resources :likes, only:[:index, :create, :destroy]
   resources :carts, only:[:show, :create, :destroy]
-  resources :history, only: [:show]
   resources :search, only: [:index]
   resources :contacts, only: [:index, :show, :new, :create]
   resources :quantitys, only: [:update]
-  resources :release, only: [:show, :destroy]
-  resources :user_info, only: [:new, :edit, :show, :create, :update]
-  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :user_info, only: [:create, :update]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 end

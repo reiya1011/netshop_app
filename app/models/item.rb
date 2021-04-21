@@ -1,11 +1,10 @@
 class Item < ApplicationRecord
-    has_one :item_info, dependent: :destroy
+  
     has_many :likes, dependent: :destroy
     has_many :cart_item, dependent: :destroy
     has_many :history_item, dependent: :destroy
     has_many :buy_info, dependent: :destroy
     has_many :item_quantity, dependent: :destroy
-    has_many :info, through: :item_info, source: :info
     has_one_attached :image
     has_many_attached :images, dependent: :destroy
 

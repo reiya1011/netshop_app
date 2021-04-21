@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
-  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :update, :destroy]
+  before_action :correct_user, only: [:show, :update, :destroy]
   before_action :admin_user, only: [:index]
 
   
@@ -15,11 +15,6 @@ class UsersController < ApplicationController
       @info = @shopping_info.u_info
       @items = @info.in_item
     end
-  end
-  
-  def new
-    @user = User.new
-    redirect_to @user
   end
   
   def create 
@@ -39,12 +34,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-    if @shopping_info = ShoppingInfo.find_by(cart_id: current_cart.id)
-      @info = @shopping_info.u_info
-    end
-  end
 
   def update
     @user = User.find(params[:id])

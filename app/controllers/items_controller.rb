@@ -47,7 +47,6 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       flash[:success] = "商品情報が変更されました"
       redirect_to @item
-     # @itemが更新できない場合
     else
       flash.now[:danger] = "変更内容に不備があります"
       render 'edit'

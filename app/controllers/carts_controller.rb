@@ -12,7 +12,6 @@ class CartsController < ApplicationController
      @items << item
    end
    @price = @item_price.sum
-   
   end
    
 
@@ -22,7 +21,7 @@ class CartsController < ApplicationController
        @cart_item = current_cart.cart_item.create(item_id: @item.id)
        @quantity = Quantity.create
        @cart_item.cart_quantity.create(quantity_id: @quantity.id)
-        flash[:success] = "ショッピングバッグに追加しました"
+       flash[:success] = "ショッピングバッグに追加しました"
        redirect_to request.referrer || current_cart
       else
        redirect_to request.referrer || current_cart
@@ -32,13 +31,12 @@ class CartsController < ApplicationController
   def destroy
    @item = current_cart.cart_item.find_by(item_id: params[:item_id])
    @item.destroy
-   @all_items = current_cart.in_item
-    if @all_items.empty?
+   if current_cart.in_item.empty?
      flash[:danger] = "カートの中身は空です"
      redirect_to root_path
-    else
+   else
      redirect_to current_cart
-    end
+   end
   end
    
    private
@@ -59,8 +57,7 @@ class CartsController < ApplicationController
    
    # カートの中身が空なら拒否
    def cart_check
-     @all_items = current_cart.in_item
-     if @all_items.empty?
+     if current_cart.in_item.empty?
       flash[:danger] = "カートの中身は空です"
       redirect_back(fallback_location: root_path)
      else

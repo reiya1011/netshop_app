@@ -37,7 +37,11 @@ class ApplicationController < ActionController::Base
     
     # 管理者でなければ拒否
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      unless logged_in?
+       redirect_to(root_url)
+      else
+       redirect_to(root_url) unless current_user.admin?
+      end
     end
     
     #問い合わせの数を取得

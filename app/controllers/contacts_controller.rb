@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
     
-    before_action :logged_in_user, only: [:index, :show]
-    before_action :admin_user, only: [:show, :index]
+   before_action :logged_in_user, only: [:index, :show]
+   before_action :admin_user, only: [:show, :index]
     
    def new 
      @contact = Contact.new
@@ -27,8 +27,8 @@ class ContactsController < ApplicationController
       flash[:success] = "問い合わせを完了しました"
       redirect_to root_path
      else
-      flash[:danger] = "入力内容に不備があります"
-      redirect_to new_contact_path
+      flash.now[:danger] = "入力内容に不備があります"
+      render new_contact_path
      end
    end
     

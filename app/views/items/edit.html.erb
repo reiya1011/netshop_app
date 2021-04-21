@@ -24,12 +24,12 @@
 
      <div class="form-group">
       <%= f.label :性別 %>
-      <%= f.select :gender, ["woman", "mens"], {selected: @item.info[0].gender}, class: "form-control" %>
+      <%= f.select :gender, ["woman", "mens"], {selected: @item.gender}, class: "form-control" %>
      </div>
   
      <div class="form-group">
       <%= f.label :カテゴリー %>
-      <%= f.select :category, ["clothes", "bag", "wallet", "accessories", "shoes", "perfume"], {selected: @item.info[0].category}, class: "form-control" %>
+      <%= f.select :category, ["clothes", "bag", "wallet", "accessories", "shoes", "perfume"], {selected: @item.category}, class: "form-control" %>
      </div>
   
      <div class="form-group">

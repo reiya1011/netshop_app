@@ -5,11 +5,7 @@ class AdminController < ApplicationController
     
   
   def home
-    unless logged_in? && current_user.admin?
-      redirect_to root_path
-    else
-     @items = Item.page(params[:page]).per(10)
-    end
+   @items = Item.page(params[:page]).per(10)
   end  
   
   

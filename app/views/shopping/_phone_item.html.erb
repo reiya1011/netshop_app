@@ -1,0 +1,32 @@
+<div class="shopping-item-wrapper">
+  <h3 class="center">ショッピングバッグ(<%= @cart_counts %>)</h3> 
+  
+  <% @items.each do |item| %>
+  
+   <% @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id) %>
+   <div class="phone-shopping-item-info">
+    
+    <div class="phone-shopping-item-info-left">
+      <%= image_tag(item.image) %>
+    </div>
+　  
+　  <div class="phone-shopping-item-info-right">
+　    <ul>
+　     <li><%= item.name %></li>
+       <li><%= "数量:#{@cart_item.cart_quantity[0].quantity.count}" %></li>
+       <li><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></li>
+　    </ul>
+  　 </div>
+　 
+　 </div>
+  <% end %>
+
+  <div class="shopping-price-info">
+
+   <div class="total-price-wrapper">
+    <span class="total-price">合計</span>
+    <span class="cart-item-price"><%= "¥#{@price}(税込み)" %></span>
+   </div>
+
+  </div>
+ </div>

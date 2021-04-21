@@ -1,0 +1,10 @@
+<div class="user-info-wrapper">
+  <%= link_to current_cart do %>
+   <%= image_tag asset_path('item_show_back_image.png'), class: 'cart-back-image' %>
+  <% end %>
+  <% unless @info.nil? %>
+   <%= render 'user_info/user-info-edit' %>
+  <% else %>
+   <%= render 'user_info/user-info-new' %>
+  <% end %>
+</div>
