@@ -5,9 +5,6 @@ document.addEventListener("turbolinks:load", function() {
 　setTimeout("$('.alert-danger').fadeOut('slow')", 3000)
 　setTimeout("$('.alert-success').fadeOut('slow')", 3000)
 　
-　
-  var slider = $('.example'); 
-　
 　/* スライドショーの設定 */
 　$('.slider-for').slick({
       slidesToShow: 1,
@@ -33,12 +30,7 @@ document.addEventListener("turbolinks:load", function() {
       slidesToShow: 1,
       arrows: true,
   });
-  
-  
-  $('.example_fire').click(function () { //タブなど切り替えの要素を指定
-       slider.slick('setPosition'); //今回のキモ「setPosition」
-  });
-  
+
   
   $('.header-list').click(function() {
 
@@ -222,8 +214,21 @@ document.addEventListener("turbolinks:load", function() {
    });
 　
 　/* 商品詳細ページの画像がうまく読み込まれない為リロード(携帯のみ) */
-　
-　/*if(document.URL.match(/items/)){ 
+　　
+　var w = $(window).width();
+	if (w <= 767) {
+	
+	 if(document.URL.match(/items/)){ 
+　   if (window.name != "any") {
+       window.location.reload();
+       window.name = "any";}
+     else {
+       window.name = "";
+     }
+ 　}
+	} 
+	
+　　/*if(document.URL.match(/items/)){ 
 　 if (window.name != "any") {
      window.location.reload();
      window.name = "any";}
