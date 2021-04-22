@@ -55,15 +55,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
     t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
-  create_table "cart_quantities", force: :cascade do |t|
-    t.integer "cart_item_id", null: false
-    t.integer "quantity_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cart_item_id"], name: "index_cart_quantities_on_cart_item_id"
-    t.index ["quantity_id"], name: "index_cart_quantities_on_quantity_id"
-  end
-
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -149,8 +140,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
   add_foreign_key "buy_infos", "u_infos"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
-  add_foreign_key "cart_quantities", "cart_items"
-  add_foreign_key "cart_quantities", "quantities"
   add_foreign_key "carts", "users"
   add_foreign_key "history_items", "carts"
   add_foreign_key "history_items", "items"
