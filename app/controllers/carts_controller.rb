@@ -3,24 +3,20 @@ class CartsController < ApplicationController
   before_action :corrent_cart, only: [:show]
   before_action :set_method, :cart_check, only: [:show]
   before_action :cart_initem_count_check, only: [:create]
- 
+  before_action :inventory_check, only: [:update]
+  
    
   def show
-   @all_items.each do |item|
+   @cart_items.each do |item|
      @cart_item = CartItem.find_by(cart_id: @cart.id, item_id: item.id)
-     @item_price << item.price * @cart_item.cart_quantity[0].quantity.count
-     @items << item
+     @item_price << item.price * @cart_item.count
    end
-   @price = @item_price.sum
   end
    
-
   def create
      @item = Item.find(params[:item_id])
       if !current_cart.in_item.include?(@item)
-       @cart_item = current_cart.cart_item.create(item_id: @item.id)
-       @quantity = Quantity.create
-       @cart_item.cart_quantity.create(quantity_id: @quantity.id)
+       current_cart.cart_item.create(item_id: @item.id)
        flash[:success] = "ショッピングバッグに追加しました"
        redirect_to request.referrer || current_cart
       else
@@ -38,9 +34,32 @@ class CartsController < ApplicationController
      redirect_to current_cart
    end
   end
+  
+  def update
+    @cart_item.update(count_params)
+    redirect_to current_cart
+  end
    
    private
    
+   def count_params
+     params.require(:cart).permit(:count)
+   end
+   
+   def item_params
+     params.require(:cart).permit(:item_id)
+   end
+   
+   
+   def inventory_check
+     @item = Item.find(params[:item_id])
+     @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: @item.id)
+     if @item.stocks < @cart_item.count
+      flash[@item.id.to_s] = "※在庫が残り#{@item.stocks}個です"
+      flash[:danger] = "在庫が足りません"
+      redirect_back(fallback_location: root_path)
+     end
+   end
    #　自身のカートかチェック
    def corrent_cart
      @cart = Cart.find(params[:id])
@@ -50,9 +69,7 @@ class CartsController < ApplicationController
    # 複数の値を取得
    def set_method
      @cart = Cart.find(params[:id])
-     @all_items = @cart.in_item
-     @items = []
-     @item_price = []
+     @cart_items = @cart.in_item
    end
    
    # カートの中身が空なら拒否

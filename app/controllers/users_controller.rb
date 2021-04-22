@@ -11,10 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    if @shopping_info = ShoppingInfo.find_by(cart_id: current_cart.id)
-      @info = @shopping_info.u_info
-      @items = @info.in_item
-    end
+    @info = current_cart.u_info[0] if !current_cart.u_info.empty?
   end
   
   def create 
@@ -41,7 +38,7 @@ class UsersController < ApplicationController
       flash[:success] = "アカウント情報が変更されました"
       redirect_to @user
     else
-      render 'edit'
+      render @user
     end
   end
   

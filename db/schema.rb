@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "item_id", null: false
+    t.integer "count", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
@@ -88,15 +89,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
     t.index ["item_id"], name: "index_history_items_on_item_id"
   end
 
-  create_table "item_quantities", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "quantity_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_item_quantities_on_item_id"
-    t.index ["quantity_id"], name: "index_item_quantities_on_quantity_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "content"
@@ -117,21 +109,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "quantities", force: :cascade do |t|
-    t.integer "count", default: 1
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "shopping_infos", force: :cascade do |t|
-    t.integer "cart_id", null: false
-    t.integer "u_info_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cart_id"], name: "index_shopping_infos_on_cart_id"
-    t.index ["u_info_id"], name: "index_shopping_infos_on_u_info_id"
-  end
-
   create_table "u_infos", force: :cascade do |t|
     t.string "name"
     t.string "postal_code"
@@ -145,12 +122,12 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
   end
 
   create_table "user_infos", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "cart_id", null: false
     t.integer "u_info_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_user_infos_on_cart_id"
     t.index ["u_info_id"], name: "index_user_infos_on_u_info_id"
-    t.index ["user_id"], name: "index_user_infos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -177,12 +154,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_063006) do
   add_foreign_key "carts", "users"
   add_foreign_key "history_items", "carts"
   add_foreign_key "history_items", "items"
-  add_foreign_key "item_quantities", "items"
-  add_foreign_key "item_quantities", "quantities"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
-  add_foreign_key "shopping_infos", "carts"
-  add_foreign_key "shopping_infos", "u_infos"
+  add_foreign_key "user_infos", "carts"
   add_foreign_key "user_infos", "u_infos"
-  add_foreign_key "user_infos", "users"
 end

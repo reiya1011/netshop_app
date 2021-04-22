@@ -19,9 +19,9 @@ class PurchaseController < ApplicationController
      @items.each do |item|
       @cart_item = CartItem.find_by(cart_id: current_cart, item_id: item.id)
       @buy_info = BuyInfo.new(u_info_id: @user_info.id, item_id: item.id)
-      @buy_info.quantity = @cart_item.quantity[0].count
+      @buy_info.quantity = @cart_item.count
       @buy_info.save
-      item.stocks = item.stocks - @cart_item.quantity[0].count
+      item.stocks -= @cart_item.count
       item.save
       @cart_item.destroy
      end
@@ -32,7 +32,7 @@ class PurchaseController < ApplicationController
     
     
     def history 
-     @info = current_user.u_info
+     @info = current_cart.u_info
      if @info.empty?
       flash[:success] = "購入履歴はありません"
       redirect_to request.referrer || user_path
@@ -50,7 +50,7 @@ class PurchaseController < ApplicationController
     private
     
     def specific_info
-       if ShoppingInfo.find_by(cart_id: current_cart.id).nil?
+       if UserInfo.find_by(cart_id: current_cart.id).nil?
          flash[:danger] = "配送先情報を登録してください"
          redirect_to request.referrer || root_url
        else
@@ -63,7 +63,7 @@ class PurchaseController < ApplicationController
      @out_of_stock = []
      @items.each do |item|
       @cart_item = CartItem.find_by(cart_id: current_cart, item_id: item.id)
-      if item.stocks < @cart_item.quantity[0].count
+      if item.stocks < @cart_item.count
        @out_of_stock <<  item.id
        flash[item.id.to_s] = "※在庫が残り#{item.stocks}個です"
       end

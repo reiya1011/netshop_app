@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
        @carts = CartItem.where(cart_id: current_cart.id)
        @count = []
        @carts.each do |cart|
-        @count << cart.cart_quantity[0].quantity.count
+        @count << cart.count
        end
        @cart_counts = @count.sum
      end

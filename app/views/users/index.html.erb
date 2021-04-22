@@ -1,6 +1,6 @@
 <!-- 管理者ページの会員一覧 -->
 <div class="admin-wrapper">
- <%= render 'admin/list' %>
+ <%= render 'static_pages/list' %>
  
  <div class="admin-right">
   <div class="list-wrapper">
@@ -20,13 +20,14 @@
     
     <tbody>
      <% @users.each do |user| %>
+      <% @cart = Cart.find_by(id: user.cart[0].id) %>
       <tr>
        <th scope="row"><%= user.id %></th> 
        <td><%= user.email %></td>
-       <% if user.u_info.empty? %>
+       <% if @cart.u_info.empty? %>
         <td>未登録</td>
        <% else %>
-        <td><%= link_to "登録済み", purchase_path(user.u_info[0].id) %></td>
+        <td><%= link_to "登録済み", purchase_path(@cart.u_info[0].id) %></td>
        <% end %>
        <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
        <% if user.admin? %>

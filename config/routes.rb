@@ -2,11 +2,9 @@ Rails.application.routes.draw do
 
   root   'static_pages#home'
   get    '/about', to: 'static_pages#about'
-  get    '/signup', to: 'users#new'
-  get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/admin/home', to: 'admin#home'
+  get '/admin/home', to: 'static_pages#admin'
   
   resources :items do
    collection do
@@ -31,9 +29,9 @@ Rails.application.routes.draw do
   
 
   resources :account_activations, only: [:edit]
-  resources :users, only:[:show, :index, :create, :destroy]
+  resources :users, only:[:show, :index, :create, :update, :destroy]
   resources :likes, only:[:index, :create, :destroy]
-  resources :carts, only:[:show, :create, :destroy]
+  resources :carts, only:[:show, :create, :destroy, :update]
   resources :search, only: [:index]
   resources :contacts, only: [:index, :show, :new, :create]
   resources :quantitys, only: [:update]

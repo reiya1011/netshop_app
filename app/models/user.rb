@@ -7,8 +7,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking, through: :likes, source: :item  
   has_many :cart, dependent: :destroy
-  has_many :user_info, dependent: :destroy
-  has_many :u_info, through: :user_info, source: :u_info
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
@@ -38,7 +36,6 @@ class User < ApplicationRecord
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
-  
   
   # ユーザーのログイン情報を破棄する
   def forget

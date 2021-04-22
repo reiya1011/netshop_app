@@ -6,7 +6,7 @@ class ShoppingController < ApplicationController
   def show
    @all_items.each do |item|
     @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
-    @item_price << item.price * @cart_item.cart_quantity[0].quantity.count
+    @item_price << item.price * @cart_item.count
     @items << item
    end
    @price = @item_price.sum
@@ -15,14 +15,9 @@ class ShoppingController < ApplicationController
   def create 
     @u_info = UInfo.new(u_info_params)
     if @u_info.save
-      if logged_in?
-        @u_info.user_info.create(user_id: current_user.id)
-        @u_info.shopping_info.create(cart_id: current_cart.id)
-        redirect_to order_shopping_index_path
-      else
-        @u_info.shopping_info.create(cart_id: current_cart.id)
-        redirect_to order_shopping_index_path
-      end
+      current_cart.user_info.create(u_info_id: @u_info.id)
+      flash[:success] = "情報が登録されました"
+      redirect_to order_shopping_index_path
     else
       flash[:user_info_danger] = "情報の登録に失敗しました。入力に誤りがあります"
       redirect_to request.referrer || shopping_path(current_cart)
@@ -41,7 +36,7 @@ class ShoppingController < ApplicationController
   def order
    @all_items.each do |item|
      @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
-     @item_price << item.price * @cart_item.cart_quantity[0].quantity.count
+     @item_price << item.price * @cart_item.count
      @items << item
     end
    @price = @item_price.sum
@@ -56,9 +51,7 @@ class ShoppingController < ApplicationController
    end
  
    def u_info
-    if @shopping_info = ShoppingInfo.find_by(cart_id: current_cart.id)
-      @info = @shopping_info.u_info
-    end
+    @info = @user_info.u_info if @user_info = UserInfo.find_by(cart_id: current_cart.id)
    end
    
    def set_method
@@ -76,7 +69,7 @@ class ShoppingController < ApplicationController
     @out_of_stock = []
     @all_items.each do |item|
      @cart_item = CartItem.find_by(cart_id: current_cart, item_id: item.id)
-     if item.stocks < @cart_item.quantity[0].count
+     if item.stocks < @cart_item.count
       @out_of_stock <<  item.id
       flash[item.id.to_s] = "残り#{item.stocks}個です"
      end

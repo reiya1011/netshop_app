@@ -29,7 +29,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  
+  # 現在のユーザーを返す
   def current_user
    if (user_id = session[:user_id])
      @current_user ||= User.find_by(id: user_id)
@@ -42,21 +42,23 @@ module SessionsHelper
    end
   end
   
+  # 同じユーザーかチェック
   def current_user?(user)
     user && user == current_user
   end
   
+  # ログインしているかチェック
   def logged_in?
     !current_user.nil?
   end
 
-
+  # 記憶したURLがあればそこにリダイレクト
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)
   end
   
-
+  # 現在のURLを記憶
   def store_location 
     session[:forwarding_url] = request.original_url if request.get?
   end

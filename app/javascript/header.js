@@ -213,8 +213,9 @@ document.addEventListener("turbolinks:load", function() {
     
    });
 　
-　// 商品詳細ページの画像がうまく読み込まれないのでURLが一致する場合にリロード(携帯のみ) 
 　
+　
+　// 商品詳細ページの画像がうまく読み込まれないのでURLが一致する場合にリロード(携帯のみ) 
 　function checkBreakPoint() {
 　  
     // windowのサイズを取得　

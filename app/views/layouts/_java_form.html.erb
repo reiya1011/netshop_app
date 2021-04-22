@@ -204,8 +204,8 @@
    
       <div class="cart-item-right">
        <div class="cart-item-info">
-        <p><%= "#{item.name}(#{@cart_item.cart_quantity[0].quantity.count})" %></p>
-        <p><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></p>
+        <p><%= "#{item.name}(#{@cart_item.count})" %></p>
+        <p><%= "¥#{item.price * @cart_item.count}" %></p>
        </div>
 　      
       </div>

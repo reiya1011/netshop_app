@@ -13,8 +13,8 @@
 　  <div class="phone-shopping-item-info-right">
 　    <ul>
 　     <li><%= item.name %></li>
-       <li><%= "数量:#{@cart_item.cart_quantity[0].quantity.count}" %></li>
-       <li><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></li>
+       <li><%= "数量:#{@cart_item.count}" %></li>
+       <li><%= "¥#{item.price * @cart_item.count}" %></li>
 　    </ul>
   　 </div>
 　 

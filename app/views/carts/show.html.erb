@@ -4,7 +4,7 @@
  <%= link_to "購入手続きに進む", shopping_path(current_cart), class: "shopping-path" %>
 
 
- <% @all_items.each do |item| %>
+ <% @cart_items.each do |item| %>
   <div class="cart-item-container">
    
    <div class="cart-item-left">
@@ -14,18 +14,17 @@
    </div>
    
    <% @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id) %>
-   <% @quantity = @cart_item.cart_quantity[0].quantity %>
-   
+
    <div class="cart-item-right">
     <%= link_to item.name, item %>
-    <p><%= "¥#{item.price * @cart_item.cart_quantity[0].quantity.count}" %></p>
+    <p><%= "¥#{item.price * @cart_item.count}" %></p>
 　  
 　  <div class="cart-item-stocks-container">
 　   <div class="cart-item-stocks-left">
      
-      <%= form_with(model: @quantity, local: true, id: "select_form_#{item.id}") do |f| %>
+      <%= form_with(model: current_cart, local: true, id: "select_form_#{item.id}") do |f| %>
 　     <div><%= hidden_field_tag :item_id, item.id %></div>
-　     <%= f.select :count, ['1', '2', '3', '4', '5'], {include_blank: '数量'}, class: 'item-stocks', onchange: "submit(#{item.id})" %>
+　     <%= f.select :count, ['1', '2', '3', '4', '5'], {include_blank: @cart_item.count}, class: 'item-stocks', onchange: "submit(#{item.id})" %>
 　    <% end %>
 　    
 　   </div>
