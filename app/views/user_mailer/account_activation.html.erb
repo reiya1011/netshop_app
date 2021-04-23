@@ -1,10 +1,6 @@
-<h1>Sample App</h1>
+<h3>NetShop</h3>
 
-<p>Hi</p>
-
-<p>
-Welcome to the Sample App! Click on the link below to activate your account:
-</p>
-
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+<p>このメールは、NetShopでアカウントを作成された方にお送りしています。下記のURLをクリックして、本人認証をしてください。</p>
+<p>身に覚えのない場合はスルーしてください。</p>
+<%= link_to "アカウントを有効化", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
