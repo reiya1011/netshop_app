@@ -3,8 +3,6 @@ class CartsController < ApplicationController
   before_action :corrent_cart, only: [:show]
   before_action :set_method, :cart_check, only: [:show]
   before_action :cart_initem_count_check, only: [:create]
-  before_action :inventory_check, only: [:update]
-  
    
   def show
    @cart_items.each do |item|
@@ -36,6 +34,8 @@ class CartsController < ApplicationController
   end
   
   def update
+    @item = Item.find(params[:item_id])
+    @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: @item.id)
     @cart_item.update(count_params)
     redirect_to current_cart
   end
@@ -50,16 +50,6 @@ class CartsController < ApplicationController
      params.require(:cart).permit(:item_id)
    end
    
-   
-   def inventory_check
-     @item = Item.find(params[:item_id])
-     @cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: @item.id)
-     if @item.stocks < @cart_item.count
-      flash[@item.id.to_s] = "※在庫が残り#{@item.stocks}個です"
-      flash[:danger] = "在庫が足りません"
-      redirect_back(fallback_location: root_path)
-     end
-   end
    #　自身のカートかチェック
    def corrent_cart
      @cart = Cart.find(params[:id])
