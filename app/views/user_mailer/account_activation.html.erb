@@ -1,6 +1,6 @@
 <h3>NetShop</h3>
 
-<p>このメールは、NetShopでアカウントを作成された方にお送りしています。下記のURLをクリックして、本人認証をしてください。</p>
-<p>身に覚えのない場合はスルーしてください。</p>
+<p>このメールは、NetShopでアカウントを作成した方にお送りしています。下記のURLをクリックして本人認証を完了してください。</p>
+<p>覚えのない場合は無視してください。</p>
 <%= link_to "アカウントを有効化", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
