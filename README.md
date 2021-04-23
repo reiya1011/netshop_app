@@ -16,7 +16,7 @@ https://lit-oasis-34166.herokuapp.com/
 # 使用技術　
 
 - ruby 2.6.3
-- ails 6.0.3
+- rails 6.0.3
 - mysql  Ver 14.14
 - puma
 - AWS
@@ -43,3 +43,4 @@ https://lit-oasis-34166.herokuapp.com/
 - 決済機能の追加
 - 商品詳細ページで画像表示の動作が不安定(スマホのみ)
   - 現在はスマホのみJavasplictでページリロードさせている
+- テスト実装
