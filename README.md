@@ -13,8 +13,8 @@
 https://lit-oasis-34166.herokuapp.com/ 
 
 - ログイン情報
-  - email official.shopapp@gmail.com
-  - password foobar
+  - email `official.shopapp@gmail.com`
+  - password `foobar`
 
 
 アカウント登録しなくてもショッピングをお楽しみ頂けます。
