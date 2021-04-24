@@ -7,9 +7,6 @@ class StaticPagesController < ApplicationController
    @recommendations = Item.last(10)if @items.empty?
   end
 
-  def about
-  end
-
   def contact
     @contact = Contact.new
   end

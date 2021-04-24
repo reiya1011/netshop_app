@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root   'static_pages#home'
-  get    '/about', to: 'static_pages#about'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/admin/home', to: 'static_pages#admin'
