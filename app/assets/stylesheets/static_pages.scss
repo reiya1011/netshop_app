@@ -487,8 +487,9 @@ footer {
   
   ul {
     display: flex;
-    list-style: none;
-    padding: 1% 0 1% 3%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1%;
     
     li {
       margin-right: 3%;
