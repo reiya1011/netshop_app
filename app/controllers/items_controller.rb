@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
   
   #新作商品(2年で設定)ページ
   def new_work
-    @all_items = Item.all
+    @all_items = Item.last(30)
     @items = []
     @count = 0
     @all_items.each do |item|

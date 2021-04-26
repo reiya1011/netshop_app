@@ -11,6 +11,9 @@ class StaticPagesController < ApplicationController
     @contact = Contact.new
   end
   
+  def about
+  end
+  
   def admin
    @items = Item.page(params[:page]).per(10)
   end  
