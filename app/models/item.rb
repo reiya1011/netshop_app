@@ -4,7 +4,6 @@ class Item < ApplicationRecord
     has_many :cart_item, dependent: :destroy
     has_many :history_item, dependent: :destroy
     has_many :buy_info, dependent: :destroy
-    has_many :item_quantity, dependent: :destroy
     has_one_attached :image
     has_many_attached :images, dependent: :destroy
 
@@ -16,18 +15,11 @@ class Item < ApplicationRecord
     validates :gender, presence: true
     validates :category, presence: true
     
-    validate  :images_length
-
-    
     private
     
     def self.search(search)
       Item.where(['name LIKE ?', "%#{search}%"])
     end
     
-    def images_length
-      if images.length > 4
-        errors.add(:images, "は4枚以内にしてください")
-      end
-    end
+  
 end
