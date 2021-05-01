@@ -27,7 +27,6 @@ https://lit-oasis-34166.herokuapp.com/
 - rails 6.0.3
 - mysql  Ver 14.14
 - puma
-- AWS
 
 # 機能一覧
 - ユーザー登録、ログイン機能(has_secure_password)
